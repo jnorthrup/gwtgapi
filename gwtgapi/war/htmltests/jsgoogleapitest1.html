@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>google-api-javascript-client test</title>
+</head>
+
+<body>
+
+	<script type="text/javascript">
+	
+var API_NAME = "fusiontables", 
+API_VERSION = "v1", 
+API_KEY = "AIzaSyAeX11OLg0zyBDlpYr2lqs4POPEjyWrooY",
+CLIENT_ID = "", 
+fusiontables_oauth2_scope = "https://www.googleapis.com/auth/fusiontables";
+
+function handleClientLoad() {
+	gapi.client.setApiKey(apiKey);
+	window.setTimeout(checkAuth, 1);
+}
+
+function checkAuth() {
+	gapi.auth.authorize({
+		client_id : clientId,
+		scope : scopes,
+		immediate : true
+	}, handleAuthResult);
+}
+
+function handleAuthResult(authResult) {
+	//var authorizeButton = document.getElementById('authorize-button');
+	if (authResult && !authResult.error) {
+		//authorizeButton.style.visibility = 'hidden';
+		makeApiCall();
+	} else {
+		//authorizeButton.style.visibility = '';
+// 		authorizeButton.onclick = handleAuthClick;
+	}
+}
+/*
+function handleAuthClick(event) {
+	gapi.auth.authorize({
+		client_id : clientId,
+		scope : scopes,
+		immediate : false
+	}, handleAuthResult);
+	return false;
+}*/
+
+function makeApiCall() {
+	alert("seba");
+	//https://www.googleapis.com/auth/fusiontables
+
+	gapi.client.load(API_NAME, API_VERSION, function() {
+		gapi.client.setApiKey(API_KEY);
+	});
+}
+	</script>
+
+	<script
+		src="https://apis.google.com/js/client.js?onload=handleClientLoad"></script>
+</body>
+</html>
