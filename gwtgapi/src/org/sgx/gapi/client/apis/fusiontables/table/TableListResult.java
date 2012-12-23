@@ -1,7 +1,7 @@
-package org.sgx.gwtfusiontables.client.table;
+package org.sgx.gapi.client.apis.fusiontables.table;
 
-import org.sgx.gwtfusiontables.client.FTResult;
-import org.sgx.gwtfusiontables.client.FTTable;
+import org.sgx.gapi.client.apis.fusiontables.FTResult;
+import org.sgx.gapi.client.apis.fusiontables.FTTable;
 
 import com.google.gwt.core.client.JsArray;
 

@@ -1,6 +1,7 @@
-//package org.sgx.gwtfusiontables.client.table;
+package org.sgx.gapi.client.apis.fusiontables.table;
+//package org.sgx.gapi.client.apis.fusiontables.table;
 //
-//import org.sgx.gwtfusiontables.client.FTResult;
+//import org.sgx.gapi.client.apis.fusiontables.FTResult;
 ///**
 // * 
 // * Hi all. I'm successfully using fusiontables in my GWT (Google Web toolkit) application using JSONP for accessing fussiontables from the client side and project code.google.com/p/gwt-oauth2/ for the authentification part. Seems to be working nice.

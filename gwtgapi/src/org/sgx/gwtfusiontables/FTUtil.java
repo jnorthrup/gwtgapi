@@ -1,4 +1,4 @@
-package org.sgx.jsutil.client;
+package org.sgx.gwtfusiontables;
 
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.jsonp.client.JsonpRequest;

@@ -1,4 +1,4 @@
-package org.sgx.gwtfusiontables.client;
+package org.sgx.gapi.client.apis.fusiontables;
 
 public class FTConstants {
 	public static final 

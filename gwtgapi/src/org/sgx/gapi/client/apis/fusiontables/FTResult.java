@@ -1,7 +1,8 @@
-package org.sgx.gwtfusiontables.client;
+package org.sgx.gapi.client.apis.fusiontables;
 
 import java.util.Collection;
 
+import org.sgx.gapi.client.apis.GAPIBase;
 import org.sgx.jsutil.client.JsObject;
 
 
@@ -9,7 +10,7 @@ import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.core.client.JsArray;
 import com.google.gwt.core.client.JsArrayString;
 
-public class FTResult extends FTBase {
+public class FTResult extends GAPIBase {
 	protected FTResult() {
 	}
 	

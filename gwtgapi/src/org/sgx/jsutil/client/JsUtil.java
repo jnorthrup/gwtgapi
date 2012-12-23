@@ -557,35 +557,35 @@ public static JsArrayNumber toJsArrayDouble(double[]a) {
 		return $entry(function(){
 			return c.@org.sgx.jsutil.client.SimpleCallback::call()(); 
 		}); 
-//		return @org.sgx.gwtfusiontables.client.JsUtil::toJsArray([Lcom/google/gwt/core/client/JavaScriptObject;)(t); 
+//		return @org.sgx.gapi.client.apis.fusiontables.JsUtil::toJsArray([Lcom/google/gwt/core/client/JavaScriptObject;)(t); 
 	}-*/;
 	
 	public static final native JsFunction toJsFunction(Callback c)/*-{
 		return $entry(function(){
 			return c.@org.sgx.jsutil.client.Callback::call(Lcom/google/gwt/core/client/JsArrayMixed;)(arguments); 
 		}); 
-	//	return @org.sgx.gwtfusiontables.client.JsUtil::toJsArray([Lcom/google/gwt/core/client/JavaScriptObject;)(t); 
+	//	return @org.sgx.gapi.client.apis.fusiontables.JsUtil::toJsArray([Lcom/google/gwt/core/client/JavaScriptObject;)(t); 
 	}-*/;
 	
 //	public static final native JsFunction toJsFunction(CallbackString c)/*-{
 //		return $entry(function(){
 //			return c.@org.sgx.jsutil.client.CallbackString::call(Lcom/google/gwt/core/client/JsArrayMixed;)(arguments);  
 //		}); 
-//	//	return @org.sgx.gwtfusiontables.client.JsUtil::toJsArray([Lcom/google/gwt/core/client/JavaScriptObject;)(t); 
+//	//	return @org.sgx.gapi.client.apis.fusiontables.JsUtil::toJsArray([Lcom/google/gwt/core/client/JavaScriptObject;)(t); 
 //	}-*/;
 //	
 //	public static final native JsFunction toJsFunction(CallbackObject c)/*-{
 //		return $entry(function(){
 //			return c.@org.sgx.jsutil.client.CallbackObject::call(Lcom/google/gwt/core/client/JsArrayMixed;)(arguments);   
 //		}); 
-//	//	return @org.sgx.gwtfusiontables.client.JsUtil::toJsArray([Lcom/google/gwt/core/client/JavaScriptObject;)(t); 
+//	//	return @org.sgx.gapi.client.apis.fusiontables.JsUtil::toJsArray([Lcom/google/gwt/core/client/JavaScriptObject;)(t); 
 //	}-*/;
 	
 	public static final native JsFunction toJsFunction(AbstractCallback c)/*-{
 		return $entry(function(){
 			return c.@org.sgx.jsutil.client.AbstractCallback::call(*)(arguments);    
 		}); 
-	//	return @org.sgx.gwtfusiontables.client.JsUtil::toJsArray([Lcom/google/gwt/core/client/JavaScriptObject;)(t); 
+	//	return @org.sgx.gapi.client.apis.fusiontables.JsUtil::toJsArray([Lcom/google/gwt/core/client/JavaScriptObject;)(t); 
 	}-*/;
 	
 	/**

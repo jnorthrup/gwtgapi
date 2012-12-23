@@ -1,6 +1,9 @@
 package org.sgx.gapitest.client;
 
 import org.sgx.gapi.client.GAPI;
+import org.sgx.gapi.client.apis.GAPICallback;
+import org.sgx.gapi.client.apis.plus.PeopleGetRequest;
+import org.sgx.gapi.client.apis.plus.PeopleGetResult;
 import org.sgx.gapi.client.auth.AuthCallback;
 import org.sgx.gapi.client.auth.AuthRequest;
 import org.sgx.gapi.client.auth.AuthResponse;
@@ -21,6 +24,8 @@ import com.google.gwt.user.client.ui.RootPanel;
 /**
  * an full contained example analog to 
  * http://code.google.com/p/google-api-javascript-client/source/browse/samples/authSample.html
+ * 
+ * authentication and a simple call to plus
  * 
  * @author sg
  *
@@ -118,21 +123,14 @@ handleAuthResult = new AuthCallback() {
 				.scope(scope)
 				.immediate(false), handleAuthResult); 
 	}
-	
+//	192.168.1.102:8888/index.html
 	protected void makeApiCall() {
-		System.out.println("makeApiCall");
 		gapi.client().load("plus", "v1", new ClientLoadCallback() {
 			
 			@Override
 			public void loaded() {
-				System.out.println("loaded");
-				HttpRequest req = gapi.client().request(ClientRequest.create()
-//					.path("/plus/v1/activities")
-					.path("/plus/v1/people/get")
-					.params(JsObject.one("userId", "me"))
-				); 
-				System.out.println("reqcreated");
-				req.execute(new ClientRequestCallback() {
+				
+				ClientRequestCallback requestCallback = new ClientRequestCallback() {
 					
 					@Override
 					public void call(JsObject jsonResp, String rawResp) {
@@ -140,7 +138,23 @@ handleAuthResult = new AuthCallback() {
 						System.out.println(JsUtil.dumpObj(jsonResp));
 						System.out.println(rawResp);
 					}
+				}; 
+				
+				//creating a request option 1
+//				HttpRequest req = gapi.client().request(ClientRequest.create()
+//					.path("/plus/v1/people/get")
+//					.params(JsObject.one("userId", "me"))
+//				);  
+				
+				//creating a request option 2			
+				
+				new PeopleGetRequest<PeopleGetResult>("me").execute(new GAPICallback<PeopleGetResult>() {
+					@Override
+					public void call(PeopleGetResult result) {
+						System.out.println("RESULT: "+result.displayName());
+					}
 				}); 
+				
 			}
 		}); 
 	}

@@ -1,4 +1,4 @@
-package org.sgx.gwtfusiontables.client;
+package org.sgx.gapi.client.apis.fusiontables;
 
 import org.sgx.jsutil.client.JsObject;
 

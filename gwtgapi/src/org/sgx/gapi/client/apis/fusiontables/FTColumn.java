@@ -1,5 +1,6 @@
-package org.sgx.gwtfusiontables.client;
+package org.sgx.gapi.client.apis.fusiontables;
 
+import org.sgx.gapi.client.apis.GAPIBase;
 import org.sgx.jsutil.client.JsObject;
 
 /**
@@ -7,7 +8,7 @@ import org.sgx.jsutil.client.JsObject;
  * @author sg
  *
  */
-public class FTColumn extends FTBase {
+public class FTColumn extends GAPIBase {
 
 protected FTColumn(){}
 /**

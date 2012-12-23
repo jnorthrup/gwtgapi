@@ -1,5 +1,6 @@
 package org.sgx.gapi.client.client;
 
+import org.sgx.gapi.client.apis.GAPIRequest;
 import org.sgx.jsutil.client.JsObject;
 
 import com.google.gwt.core.client.JavaScriptObject;
@@ -47,8 +48,11 @@ public final native void register(String method)/*-{
 public final native HttpRequest request(ClientRequest req)/*-{
 return this.request(req); 
 }-*/;
+//public final native HttpRequest request(GAPIRequest req)/*-{
+//return this.request(req.@org.sgx.gapi.client.apis.GAPIRequest::getClientRequest()()); 
+//}-*/;
 /**
- * Creates an RPC Request directly. The method name and version identify the method to be executed and the RPC params are provided upon RPC creation. 
+ * Creates an RPC GAPIRequest directly. The method name and version identify the method to be executed and the RPC params are provided upon RPC creation. 
  * @param method The method to be executed. For example, 'plus.people.search' from the G+ API. 
  * @param version The version of the API which defines the method to be executed. Defaults to 'v1' 
  * @param rpcParams A key-value pair of the params to supply to this RPC.  
