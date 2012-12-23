@@ -87,7 +87,7 @@ return this;
  * @return this - for setter chaining
  */
 public native final AuthRequest scope(String...val) /*-{
-this["scope"] = @jsu; 
+this["scope"] = @org.sgx.jsutil.client.JsUtil::toJsArrayString([Ljava/lang/String;)(val); 
 return this; 
 }-*/;
 }
