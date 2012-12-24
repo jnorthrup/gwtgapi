@@ -12,19 +12,28 @@ import org.sgx.gapi.client.client.ClientLoadCallback;
  * 
  */
 public class GAPILoader implements AuthCallback {
+	
+	
+	
 	AuthDefinition authDefinition;
-	String moduleName, moduleVersion;
+//	String moduleName, moduleVersion;
 	private AuthUtil authUtil;
 	private GAPILoaderCallback gapiLoadedCallback;
+	private ModuleDefinition module;
 
-	public GAPILoader(AuthDefinition authDefinition, String moduleName, String moduleVersion) {
+	public GAPILoader(ModuleDefinition moduleDef) {
+		this(null, moduleDef); 
+	}
+	
+	public GAPILoader(AuthDefinition authDefinition,ModuleDefinition moduleDef) {
 		super();
 		this.authDefinition = authDefinition;
-		this.moduleName = moduleName;
-		this.moduleVersion = moduleVersion;
+//		this.moduleName = moduleName;
+//		this.moduleVersion = moduleVersion;
+		this.module = moduleDef; 
 	}
 
-	public void execute(GAPILoaderCallback callback) {
+	public void load(GAPILoaderCallback callback) {
 		this.gapiLoadedCallback = callback;
 		if (authDefinition != null) {
 			authUtil = new AuthUtil();
@@ -42,25 +51,25 @@ public class GAPILoader implements AuthCallback {
 		this.authDefinition = authDefinition;
 	}
 
-	public String getModuleName() {
-		return moduleName;
-	}
-
-	public void setModuleName(String moduleName) {
-		this.moduleName = moduleName;
-	}
-
-	public String getModuleVersion() {
-		return moduleVersion;
-	}
-
-	public void setModuleVersion(String moduleVersion) {
-		this.moduleVersion = moduleVersion;
-	}
+//	public String getModuleName() {
+//		return moduleName;
+//	}
+//
+//	public void setModuleName(String moduleName) {
+//		this.moduleName = moduleName;
+//	}
+//
+//	public String getModuleVersion() {
+//		return moduleVersion;
+//	}
+//
+//	public void setModuleVersion(String moduleVersion) {
+//		this.moduleVersion = moduleVersion;
+//	}
 
 	@Override
 	public void authenticated(final AuthResponse r) {
-		GAPI.get().client().load(getModuleName(), getModuleVersion(), new ClientLoadCallback() {
+		GAPI.get().client().load(module.getModuleName(), module.getModuleVersion(), new ClientLoadCallback() {
 			@Override
 			public void loaded() {
 

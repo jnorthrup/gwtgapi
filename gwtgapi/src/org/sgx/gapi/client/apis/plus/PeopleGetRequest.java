@@ -3,6 +3,7 @@ package org.sgx.gapi.client.apis.plus;
 import org.sgx.gapi.client.GAPI;
 import org.sgx.gapi.client.apis.GAPICallback;
 import org.sgx.gapi.client.apis.GAPIRequest;
+import org.sgx.gapi.client.apis.GAPIResult;
 import org.sgx.gapi.client.client.ClientRequest;
 import org.sgx.gapi.client.client.ClientRequestCallback;
 import org.sgx.gapi.client.client.HttpRequest;
@@ -26,8 +27,8 @@ public void execute(final GAPICallback<T> c) {
 	req.execute(new ClientRequestCallback() {
 		
 		@Override
-		public void call(JsObject jsonResp, String rawResp) {
-			c.call((T)jsonResp); 
+		public void call(GAPIResult jsonResp, String rawResp) {
+			c.call((T)jsonResp.cast()); 
 		}
 	}); 
 }

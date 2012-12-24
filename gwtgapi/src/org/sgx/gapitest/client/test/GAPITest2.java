@@ -1,4 +1,6 @@
-package org.sgx.gapitest.client;
+package org.sgx.gapitest.client.test;
+
+import java.util.Map;
 
 import org.sgx.gapi.client.GAPI;
 import org.sgx.gapi.client.apis.GAPICallback;
@@ -9,10 +11,15 @@ import org.sgx.gapi.client.auth.AuthResponse;
 import org.sgx.gapi.client.client.ClientLoadCallback;
 import org.sgx.gapi.client.loader.AuthUtil;
 import org.sgx.gapi.client.util.GAPILoadCallback;
+import org.sgx.gapitest.client.TestConstants;
+import org.sgx.gapitest.client.app.Gallery;
+import org.sgx.gapitest.client.app.Test;
 import org.sgx.jsutil.client.JsUtil;
 
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.dom.client.Element;
+import com.google.gwt.resources.client.TextResource;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.RootPanel;
 
@@ -23,7 +30,7 @@ import com.google.gwt.user.client.ui.RootPanel;
  * @author sg
  * 
  */
-public class GAPITest2 implements EntryPoint {
+public class GAPITest2 implements EntryPoint, Test {
 
 	private String clientId;
 	private String apiKey;
@@ -32,7 +39,7 @@ public class GAPITest2 implements EntryPoint {
 	private Button authButton;
 
 	@Override
-	public void onModuleLoad() {
+	public void test(Element parent) {
 
 		GAPI.load(new GAPILoadCallback() {
 
@@ -43,7 +50,6 @@ public class GAPITest2 implements EntryPoint {
 
 			}
 		});
-
 	}
 
 	protected void main() {
@@ -63,33 +69,60 @@ public class GAPITest2 implements EntryPoint {
 
 		AuthUtil authUtil = new AuthUtil();
 		authUtil.authenticate(clientId, authButton, scope, new AuthCallback() {
-			
+
 			@Override
 			public void authenticated(AuthResponse r) {
 				makeApiCall();
 			}
-		});	
+		});
 	}
 
 	protected void makeApiCall() {
-		gapi.client().load("fisiontables", "v1", new ClientLoadCallback() {
+		gapi.client().load("fusiontables", "v1", new ClientLoadCallback() {
 			@Override
 			public void loaded() {
-				
+
 				new TableListRequest().execute(new GAPICallback<TableListResult>() {
 					@Override
 					public void call(TableListResult result) {
-						if(result.error()!=null) {
-							System.out.println("error : "+result.error());
-							return; 
+						if (result.error() != null) {
+							Gallery.getInstance().getConsole().append("error : " + result.error()); 
+							return;
 						}
-//						for(result.items()
-						System.out.println("RESULT2: " + JsUtil.dumpObj(result) + " - " + result.error().message());// result.items().length());
+						else {
+							Gallery.getInstance().getConsole().append("RESULT2: " + JsUtil.dumpObj(result));
+						}
 					}
 				});
 
 			}
 		});
+	}
+
+	// test stuff
+	@Override
+	public String getId() {
+		return "GAPITest2";
+	}
+
+	@Override
+	public String getDescription() {
+		return "This test is similar uses oauth for accessing fusiontables. Use java class AuthUtil for easing the auth stuff.";
+	}
+
+	@Override
+	public Map<String, TextResource> getResources() {
+		return null;
+	}
+
+	@Override
+	public String[] getTags() {
+		return null;
+	}
+
+	@Override
+	public void onModuleLoad() {
+		test(RootPanel.getBodyElement());
 	}
 
 }

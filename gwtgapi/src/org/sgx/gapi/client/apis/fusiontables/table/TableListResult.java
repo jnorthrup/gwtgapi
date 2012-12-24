@@ -2,12 +2,12 @@ package org.sgx.gapi.client.apis.fusiontables.table;
 
 import java.util.Collection;
 
-import org.sgx.gapi.client.apis.fusiontables.FTResult;
+import org.sgx.gapi.client.apis.GAPIResult;
 import org.sgx.gapi.client.apis.fusiontables.FTTable;
 
 import com.google.gwt.core.client.JsArray;
 
-public class TableListResult extends FTResult {
+public class TableListResult extends GAPIResult {
 protected TableListResult(){}
 
 /**

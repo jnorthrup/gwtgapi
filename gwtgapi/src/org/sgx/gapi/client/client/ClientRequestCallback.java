@@ -1,7 +1,7 @@
 package org.sgx.gapi.client.client;
 
-import org.sgx.jsutil.client.JsObject;
+import org.sgx.gapi.client.apis.GAPIResult;
 
 public interface ClientRequestCallback {
-void call(JsObject jsonResp, String rawResp);//HTTPRawResponse rawResp);
+void call(GAPIResult jsonResp, String rawResp);//HTTPRawResponse rawResp);
 }

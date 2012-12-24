@@ -3,10 +3,10 @@ package org.sgx.gapi.client.apis.fusiontables.table;
 import org.sgx.gapi.client.GAPI;
 import org.sgx.gapi.client.apis.GAPICallback;
 import org.sgx.gapi.client.apis.GAPIRequest;
+import org.sgx.gapi.client.apis.GAPIResult;
 import org.sgx.gapi.client.client.ClientRequest;
 import org.sgx.gapi.client.client.ClientRequestCallback;
 import org.sgx.gapi.client.client.HttpRequest;
-import org.sgx.jsutil.client.JsObject;
 
 public class TableListRequest implements GAPIRequest<TableListResult>{
 
@@ -20,7 +20,7 @@ public class TableListRequest implements GAPIRequest<TableListResult>{
 			req.execute(new ClientRequestCallback() {
 				
 				@Override
-				public void call(JsObject jsonResp, String rawResp) {
+				public void call(GAPIResult jsonResp, String rawResp) {
 					c.call((TableListResult)jsonResp); 
 				}
 			}); 

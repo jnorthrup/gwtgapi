@@ -1,10 +1,10 @@
-package org.sgx.gapi.client.apis.fusiontables;
+package org.sgx.gapi.client.apis;
 
 import org.sgx.jsutil.client.JsObject;
 
 
-public class FTError extends JsObject {
-protected FTError(){}
+public class GAPIError extends JsObject {
+protected GAPIError(){}
 
 //TODO: errors
 /**
@@ -20,7 +20,7 @@ return this["code"];
  * @param val
  * @return this - for setter chaining
  */
-public native final FTError code(int val) /*-{
+public native final GAPIError code(int val) /*-{
 this["code"] = val; 
 return this; 
 }-*/;
@@ -38,7 +38,7 @@ return this["message"];
  * @param val
  * @return this - for setter chaining
  */
-public native final FTError message(String val) /*-{
+public native final GAPIError message(String val) /*-{
 this["message"] = val; 
 return this; 
 }-*/;

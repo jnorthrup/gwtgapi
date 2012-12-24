@@ -15,7 +15,7 @@ protected RpcRequest(){}
 public native final void execute(ClientRequestCallback val) /*-{
 var fn = $entry(function(r1, r2) {
 	if(!r1)r1=null;
-	return val.@org.sgx.gapi.client.client.ClientRequestCallback::call(Lorg/sgx/jsutil/client/JsObject;Ljava/lang/String;)(r1, r2);
+	return val.@org.sgx.gapi.client.client.ClientRequestCallback::call(Lorg/sgx/gapi/client/apis/GAPIResult;Ljava/lang/String;)(r1, r2); //call(Lorg/sgx/jsutil/client/JsObject;Ljava/lang/String;)(r1, r2);
 	//call(Lorg/sgx/jsutil/client/JsObject;Lorg/sgx/gapi/client/client/HTTPRawResponse;)(r1, r2);
 });
 this.execute(fn);

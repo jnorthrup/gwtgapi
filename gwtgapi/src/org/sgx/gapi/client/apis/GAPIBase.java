@@ -1,6 +1,5 @@
 package org.sgx.gapi.client.apis;
 
-import org.sgx.gapi.client.apis.fusiontables.FTResult;
 import org.sgx.jsutil.client.JsObject;
 
 public class GAPIBase extends JsObject {
@@ -20,7 +19,7 @@ return this["kind"];
  * @param val
  * @return this - for setter chaining
  */
-public native final FTResult kind(String val) /*-{
+public native final GAPIBase kind(String val) /*-{
 this["kind"] = val; 
 return this; 
 }-*/;

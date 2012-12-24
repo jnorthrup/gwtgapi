@@ -2,7 +2,14 @@
 <!DOCTYPE module PUBLIC "-//Google Inc.//DTD Google Web Toolkit 2.4.0//EN" "http://google-web-toolkit.googlecode.com/svn/tags/2.4.0/distro-source/core/src/gwt-module.dtd">
 <module>
 	<inherits name="com.google.gwt.user.User" />
+	<inherits name="com.google.gwt.json.JSON" />
 	<inherits name="org.sgx.gapi.GAPI" />
+		
+	<inherits name='com.google.gwt.user.theme.clean.Clean' />
+	
 	<source path="client" />
-	<entry-point class="org.sgx.gapitest.client.GAPITest2" />
+	<stylesheet src="http://yui.yahooapis.com/3.8.0/build/cssgrids/grids-min.css"/>
+	    
+	<entry-point class="org.sgx.gapitest.client.MainEntryPoint" />
+	
 </module>

@@ -1,0 +1,64 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+    xmlns:g="urn:import:com.google.gwt.user.client.ui" 
+    xmlns:gapitest="urn:import:org.sgx.gapitest.client.app.ui" 
+    >
+
+    <ui:style>
+		.important {
+			font-weight: bold;
+		}
+.wrapper {
+width:90%;
+margin: auto;
+}
+.header {
+} 
+.body {
+}
+.testContainer {
+/*width: 100%;*/ 
+}
+.leftPanel {
+}
+a {
+cursor: pointer; 
+}
+    </ui:style>
+
+    <g:HTMLPanel>
+
+        <div class="{style.wrapper}" >
+
+            <div class="yui3-g {style.header}" >
+
+                <div
+                    class="yui3-u-1"
+                    ui:field="header" >
+                    Example Showcase for <a href="http://code.google.com/p/gwtgapi/">GWTGAPI</a>. 
+                </div>
+            </div>
+
+            <div class="yui3-g {style.body}" >
+
+                <div
+                    class="yui3-u-5-24 {style.leftPanel}"
+                    ui:field="leftPanel" >
+                    
+                    <gapitest:Console ui:field="console"></gapitest:Console>
+                    left panel left panel left panel 
+                    
+                    <g:VerticalPanel ui:field="exampleLauncherContainer"><g:Button>Hello</g:Button></g:VerticalPanel>
+                    left panel left panel left panel left panel left panel left panel left panel left panel left panel left panel left panel 
+                </div>
+
+                <div
+                    class="yui3-u-19-24 {style.testContainer}"
+                    ui:field="testContainer" >
+                    test container test container test container test container test container test container test container test container test container test container test container test container test container
+                </div>
+            </div>
+        </div>
+    </g:HTMLPanel>
+
+</ui:UiBinder>
