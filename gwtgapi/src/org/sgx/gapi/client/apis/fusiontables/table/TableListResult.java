@@ -1,5 +1,7 @@
 package org.sgx.gapi.client.apis.fusiontables.table;
 
+import java.util.Collection;
+
 import org.sgx.gapi.client.apis.fusiontables.FTResult;
 import org.sgx.gapi.client.apis.fusiontables.FTTable;
 
@@ -15,7 +17,13 @@ protected TableListResult(){}
 public native final JsArray<FTTable> items() /*-{
 return this["items"]; 
 }-*/;
-
+/**
+ * 
+ * @return
+ */
+public native final Collection<FTTable> itemsCol() /*-{
+return @org.sgx.jsutil.client.JsUtil::toJavaCollection(Lcom/google/gwt/core/client/JavaScriptObject;)(this["items"]); 
+}-*/;
 /**
  * 
  * @param val

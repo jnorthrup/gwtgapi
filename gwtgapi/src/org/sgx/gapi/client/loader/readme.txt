@@ -1,0 +1,1 @@
+artificial java utilities for easily authenticate and load GAPI "modules". 

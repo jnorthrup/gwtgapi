@@ -56,7 +56,7 @@ return this["expires_in"];
  * @param val
  * @return this - for setter chaining
  */
-public native final AuthToken expires_in(String val) /*-{1º
+public native final AuthToken expires_in(String val) /*-{
 this["expires_in"] = val; 
 return this; 
 }-*/;

@@ -4,5 +4,5 @@
 	<inherits name="com.google.gwt.user.User" />
 	<inherits name="org.sgx.gapi.GAPI" />
 	<source path="client" />
-	<entry-point class="org.sgx.gapitest.client.GAPITest1" />
+	<entry-point class="org.sgx.gapitest.client.GAPITest2" />
 </module>

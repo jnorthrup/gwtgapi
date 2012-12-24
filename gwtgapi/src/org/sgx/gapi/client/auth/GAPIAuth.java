@@ -41,7 +41,7 @@ public class GAPIAuth extends JavaScriptObject {
 	 */
 	public final native void authorize(AuthRequest req, AuthCallback c)/*-{
 		var fn = $entry(function(r) {
-			return c.@org.sgx.gapi.client.auth.AuthCallback::call(Lorg/sgx/gapi/client/auth/AuthResponse;)(r);
+			return c.@org.sgx.gapi.client.auth.AuthCallback::authenticated(Lorg/sgx/gapi/client/auth/AuthResponse;)(r);
 		});
 		this.authorize(req, fn);
 	}-*/;
@@ -56,7 +56,7 @@ public class GAPIAuth extends JavaScriptObject {
 	 */
 	public final native void init(AuthCallback c)/*-{
 		var fn = $entry(function(r) {
-			return c.@org.sgx.gapi.client.auth.AuthCallback::call(Lorg/sgx/gapi/client/auth/AuthResponse;)(r);
+			return c.@org.sgx.gapi.client.auth.AuthCallback::authenticated(Lorg/sgx/gapi/client/auth/AuthResponse;)(r);
 		});
 		this.init(fn);
 	}-*/;
