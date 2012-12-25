@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.sgx.gapitest.client.app.Test;
+import org.sgx.gapitest.client.test.CustomSearchTest1;
 import org.sgx.gapitest.client.test.GAPITest1;
 import org.sgx.gapitest.client.test.GAPITest2;
 import org.sgx.gapitest.client.test.UrlShortener1;
@@ -19,7 +20,9 @@ private TestHome() {
 private void initTest() {
 	addTest(new GAPITest1());
 	addTest(new GAPITest2()); 
-	addTest(new UrlShortener1()); 
+	addTest(new UrlShortener1());
+	addTest(new CustomSearchTest1());
+	
 	
 }
 

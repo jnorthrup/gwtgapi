@@ -111,7 +111,7 @@ public class GAPITest1 implements EntryPoint, Test {
 	}
 
 	void checkAuth() {
-		gapi.auth().authorize(AuthRequest.create()				
+		gapi.auth().authorize(AuthRequest.create()		
 				.client_id(clientId)
 				.scope(scope)
 				.immediate(true), handleAuthResult);
