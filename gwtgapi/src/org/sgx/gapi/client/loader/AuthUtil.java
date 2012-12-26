@@ -53,12 +53,12 @@ public class AuthUtil {
 			public void authenticated(AuthResponse r) {
 				// System.out.println("HHH: " + JsUtil.dumpObj(r ) + " - " + JsUtil.dumpObj(r.error()));
 				if (r != null && r.error() == null) {
-					System.out.println("making api call");
+//					System.out.println("making api call");
 					trigger.setEnabled(false); // .removeFromParent(); // .setEnabled(false);//.getStyle().setProperty("visibility", "hidden");
 					ready.authenticated(r); 
 //					ready.run();
 				} else {
-					System.out.println("not making api call");
+//					System.out.println("not making api call");
 					trigger.setEnabled(true);
 					trigger.addTriggerHandler(new Runnable() {
 						@Override

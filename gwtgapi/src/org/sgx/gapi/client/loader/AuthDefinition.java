@@ -4,7 +4,7 @@ public class AuthDefinition {
 	String clientId, scope;
 	AuthUITrigger authUITrigger;
 
-	private AuthDefinition(String clientId, String scope, AuthUITrigger authUITrigger) {
+	public AuthDefinition(String clientId, String scope, AuthUITrigger authUITrigger) {
 		super();
 		this.clientId = clientId;
 		this.scope = scope;

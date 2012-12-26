@@ -63,7 +63,6 @@ cursor: pointer;
                     class="yui3-u-5-24 {style.leftPanel}"
                     ui:field="leftPanel" >
                     
-                    <gapitest:Console ui:field="console"></gapitest:Console>
                     left panel left panel left panel 
                     
                     <g:VerticalPanel ui:field="exampleLauncherContainer"><g:Button>Hello</g:Button></g:VerticalPanel>
@@ -71,8 +70,13 @@ cursor: pointer;
                 </div>
 
                 <div
-                    class="yui3-u-19-24 {style.testContainer}"
-                    ui:field="testContainer" >
+                    class="yui3-u-19-24 ">
+                    
+                    <div class="{style.testContainer}"
+                    ui:field="testContainer"></div>
+                    <gapitest:Console ui:field="console"></gapitest:Console>
+                    
+                    
                     test container test container test container test container test container test container test container test container test container test container test container test container test container
                 </div>
             </div>
