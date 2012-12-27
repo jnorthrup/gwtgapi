@@ -7,8 +7,9 @@
 	<inherits name='com.google.gwt.user.theme.clean.Clean' />
 	
 	<source path="client" />
+	
 	<stylesheet src="http://yui.yahooapis.com/3.8.0/build/cssgrids/grids-min.css"/>
-	    
+	
 	<entry-point class="org.sgx.gapitest.client.MainEntryPoint" />
 	
 </module>

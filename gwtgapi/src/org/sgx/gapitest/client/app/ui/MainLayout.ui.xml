@@ -4,29 +4,8 @@
     xmlns:gapitest="urn:import:org.sgx.gapitest.client.app.ui" 
     >
 
-    <ui:style>
-		.important {
-			font-weight: bold;
-		}
-.wrapper {
-width:90%;
-margin: auto;
-}
-.header {
-margin-bottom: 20px;
-} 
-.body {
-}
-.testContainer {
-/*width: 100%;*/ 
-}
-.leftPanel {
-}
-a {
-cursor: pointer; 
-}
-    </ui:style>
-
+    <ui:style src="mainLayoutStyle.css"></ui:style>
+    
     <g:HTMLPanel>
 
         <div class="{style.wrapper}" >
@@ -63,17 +42,19 @@ cursor: pointer;
                     class="yui3-u-5-24 {style.leftPanel}"
                     ui:field="leftPanel" >
                     
-                    left panel left panel left panel 
+                    These are the tests, click to Run them. Also you can 
+                    <g:Button text="See Java Sources" ui:field="seeSourcesButton"></g:Button>
+                    of current test: 
                     
-                    <g:VerticalPanel ui:field="exampleLauncherContainer"><g:Button>Hello</g:Button></g:VerticalPanel>
-                    left panel left panel left panel left panel left panel left panel left panel left panel left panel left panel left panel 
+                    <g:VerticalPanel ui:field="exampleLauncherContainer" styleName="{style.testLaunchersContainer}">
+                    </g:VerticalPanel> 
                 </div>
 
                 <div
                     class="yui3-u-19-24 ">
                     
-                    <div class="{style.testContainer}"
-                    ui:field="testContainer"></div>
+                    <div class="{style.testContainer}" ui:field="testContainer"></div>
+                    
                     <gapitest:Console ui:field="console"></gapitest:Console>
                     
                     

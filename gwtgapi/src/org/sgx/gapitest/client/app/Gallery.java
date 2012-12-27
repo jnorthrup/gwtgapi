@@ -52,11 +52,15 @@ private void init() {
 			@Override
 			public void onClick(ClickEvent event) {
 				test.test(testTargetEl); 
+				event.preventDefault(); 
+				setCurrentTest(test); 
 			}
 		}); 
 	}	
 }
-
+public static native final void prettyPrint()/*-{
+$wnd.prettyPrint();
+}-*/;
 public MainLayout getMainLayout() {
 	return mainLayout;
 }
@@ -72,5 +76,11 @@ public Console getConsole() {
 public void log(String s) {
 	getConsole().append(s); 
 }
-
+Test currentTest; 
+public Test getCurrentTest() {
+	return currentTest;
+}
+public void setCurrentTest(Test currentTest) {
+	this.currentTest = currentTest;
+}
 }

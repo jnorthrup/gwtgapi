@@ -1,5 +1,6 @@
 package org.sgx.gapitest.client.test;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import org.sgx.gapi.client.GAPI;
@@ -11,13 +12,12 @@ import org.sgx.gapi.client.auth.AuthResponse;
 import org.sgx.gapi.client.client.ClientLoadCallback;
 import org.sgx.gapi.client.loader.AuthUtil;
 import org.sgx.gapi.client.util.GAPILoadCallback;
-import org.sgx.gapitest.client.TestConstants;
+import org.sgx.gapitest.client.GAPITestConstants;
 import org.sgx.gapitest.client.app.Gallery;
 import org.sgx.gapitest.client.app.Test;
 import org.sgx.jsutil.client.JsUtil;
 
 import com.google.gwt.core.client.EntryPoint;
-import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.resources.client.TextResource;
 import com.google.gwt.user.client.ui.Button;
@@ -40,23 +40,19 @@ public class GAPITest2 implements EntryPoint, Test {
 
 	@Override
 	public void test(Element parent) {
-
 		GAPI.load(new GAPILoadCallback() {
-
 			@Override
 			public void loaded() {
-
 				main();
-
 			}
 		});
 	}
 
 	protected void main() {
 
-		clientId = TestConstants.CLIENT_ID;
+		clientId = GAPITestConstants.CLIENT_ID;
 
-		apiKey = TestConstants.API_KEY;
+		apiKey = GAPITestConstants.API_KEY;
 
 		scope = "https://www.googleapis.com/auth/fusiontables";
 
@@ -102,7 +98,7 @@ public class GAPITest2 implements EntryPoint, Test {
 	// test stuff
 	@Override
 	public String getId() {
-		return "GAPITest2";
+		return "FusionTables";
 	}
 
 	@Override
@@ -112,7 +108,9 @@ public class GAPITest2 implements EntryPoint, Test {
 
 	@Override
 	public Map<String, TextResource> getResources() {
-		return null;
+		HashMap<String, TextResource> m = new HashMap<String, TextResource>(); 
+		m.put("FusionTables.java", TestResources.INSTANCE.GAPITest2());
+		return m;
 	}
 
 	@Override

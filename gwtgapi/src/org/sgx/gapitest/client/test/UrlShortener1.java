@@ -1,5 +1,6 @@
 package org.sgx.gapitest.client.test;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import org.sgx.gapi.client.GAPI;
@@ -16,7 +17,7 @@ import org.sgx.gapi.client.loader.GAPILoader;
 import org.sgx.gapi.client.loader.GAPILoaderCallback;
 import org.sgx.gapi.client.loader.ModuleDefinition;
 import org.sgx.gapi.client.util.GAPILoadCallback;
-import org.sgx.gapitest.client.TestConstants;
+import org.sgx.gapitest.client.GAPITestConstants;
 import org.sgx.gapitest.client.app.Gallery;
 import org.sgx.gapitest.client.app.Test;
 import org.sgx.jsutil.client.JsObject;
@@ -52,7 +53,7 @@ public class UrlShortener1 implements EntryPoint, Test {
 	
 	protected void main() {
 
-		apiKey = TestConstants.API_KEY;
+		apiKey = GAPITestConstants.API_KEY;
 
 		gapi = GAPI.get();
 
@@ -133,7 +134,9 @@ public class UrlShortener1 implements EntryPoint, Test {
 
 	@Override
 	public Map<String, TextResource> getResources() {
-		return null;
+		HashMap<String, TextResource> m = new HashMap<String, TextResource>(); 
+		m.put("UrlShortener1.java", TestResources.INSTANCE.UrlShortener1());
+		return m;
 	}
 
 	@Override

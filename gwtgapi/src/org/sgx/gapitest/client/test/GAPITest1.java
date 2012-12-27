@@ -1,5 +1,6 @@
 package org.sgx.gapitest.client.test;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import org.sgx.gapi.client.GAPI;
@@ -17,7 +18,8 @@ import org.sgx.gapi.client.client.ClientRequest;
 import org.sgx.gapi.client.client.ClientRequestCallback;
 import org.sgx.gapi.client.client.HttpRequest;
 import org.sgx.gapi.client.util.GAPILoadCallback;
-import org.sgx.gapitest.client.TestConstants;
+import org.sgx.gapitest.client.GAPITestConstants;
+import org.sgx.gapitest.client.app.AbstractTest;
 import org.sgx.gapitest.client.app.Gallery;
 import org.sgx.gapitest.client.app.Test;
 import org.sgx.jsutil.client.JsObject;
@@ -40,7 +42,7 @@ import com.google.gwt.user.client.ui.RootPanel;
  * @author sg
  * 
  */
-public class GAPITest1 implements EntryPoint, Test {
+public class GAPITest1 extends AbstractTest implements EntryPoint, Test {
 
 	private String clientId;
 	private String apiKey;
@@ -48,8 +50,6 @@ public class GAPITest1 implements EntryPoint, Test {
 	private GAPI gapi;
 	private Button authButton;
 	private AuthCallback handleAuthResult;
-
-	
 
 	@Override
 	public void test(Element parent) {
@@ -69,9 +69,9 @@ public class GAPITest1 implements EntryPoint, Test {
 
 		handleAuthResult = new AuthCallback() {
 			@Override
-			public void authenticated(AuthResponse r) {				
+			public void authenticated(AuthResponse r) {
 				if (r != null && r.error() == null) {
-					authButton.removeFromParent(); 
+					authButton.removeFromParent();
 					makeApiCall();
 				} else {
 					authButton.setEnabled(true);
@@ -85,9 +85,9 @@ public class GAPITest1 implements EntryPoint, Test {
 				}
 			}
 		};
-		clientId = TestConstants.CLIENT_ID;
+		clientId = GAPITestConstants.CLIENT_ID;
 
-		apiKey = TestConstants.API_KEY;
+		apiKey = GAPITestConstants.API_KEY;
 
 		scope = "https://www.googleapis.com/auth/plus.me";
 
@@ -107,21 +107,15 @@ public class GAPITest1 implements EntryPoint, Test {
 			}
 		}, 1);
 
-//		System.out.println("gapi loaded");
+		// System.out.println("gapi loaded");
 	}
 
 	void checkAuth() {
-		gapi.auth().authorize(AuthRequest.create()		
-				.client_id(clientId)
-				.scope(scope)
-				.immediate(true), handleAuthResult);
+		gapi.auth().authorize(AuthRequest.create().client_id(clientId).scope(scope).immediate(true), handleAuthResult);
 	}
 
 	protected void handleAuthClick() {
-		gapi.auth().authorize(AuthRequest.create()
-				.client_id(clientId)
-				.scope(scope)
-				.immediate(false), handleAuthResult);
+		gapi.auth().authorize(AuthRequest.create().client_id(clientId).scope(scope).immediate(false), handleAuthResult);
 	}
 
 	// 192.168.1.102:8888/index.html
@@ -130,43 +124,42 @@ public class GAPITest1 implements EntryPoint, Test {
 
 			@Override
 			public void loaded() {
-				
-				//we perform two operations, one using the Java easy api: 
+
+				// we perform two operations, one using the Java easy api:
 
 				new PeopleGetRequest<PeopleGetResult>("me").execute(new GAPICallback<PeopleGetResult>() {
 					@Override
 					public void call(PeopleGetResult result) {
-						Gallery.getInstance().getConsole().append("RESULT1: " + result.displayName()); 
-//						System.out.println("RESULT1: " + result.displayName());
+						log("RESULT1: " +						
+							result.displayName() // access the result using the Java API
+							+ " - " + 
+							result.objGetString("displayName")); // access the result using the JSO directly
 					}
 				});
 
-				// and the other doing manual work. The first Java solution is based on this: 
+				// and the other operation doing manual work. The first Java solution is based on this:
 
 				ClientRequestCallback requestCallback = new ClientRequestCallback() {
 					@Override
 					public void call(GAPIResult jsonResp, String rawResp) {
-						
-						Gallery.getInstance().getConsole().append("RESULT2: "+jsonResp.objGetString("displayName"));
+						log("RESULT2: " + jsonResp.objGetString("displayName"));
 					}
 				};
-				ClientRequest reqDef = ClientRequest.create()
-						.path("/plus/v1/people/get")
-						.params(JsObject.one("userId", "me")); 
+				ClientRequest reqDef = ClientRequest.create().path("/plus/v1/people/get")
+						.params(JsObject.one("userId", "me"));
 				HttpRequest req = gapi.client().request(reqDef);
-				req.execute(requestCallback); 
+				req.execute(requestCallback);
 
 			}
 		});
 	}
 
-	
-	//test stuff
+	// test stuff
 	@Override
 	public String getId() {
 		return "GAPITest1";
 	}
-	
+
 	@Override
 	public String getDescription() {
 		return "an full contained example analog to http://code.google.com/p/google-api-javascript-client/source/browse/samples/authSample.html. Here we do auth manually and show two different ways of accessing the api.";
@@ -174,16 +167,18 @@ public class GAPITest1 implements EntryPoint, Test {
 
 	@Override
 	public Map<String, TextResource> getResources() {
-		return null;
+		HashMap<String, TextResource> m = new HashMap<String, TextResource>(); 
+		m.put("GAPITest1.java", TestResources.INSTANCE.GAPITest1());
+		return m;
 	}
 
 	@Override
 	public String[] getTags() {
 		return null;
 	}
-	
+
 	@Override
-	public void onModuleLoad() {		
-		test(RootPanel.getBodyElement()); 
+	public void onModuleLoad() {
+		test(RootPanel.getBodyElement());
 	}
 }

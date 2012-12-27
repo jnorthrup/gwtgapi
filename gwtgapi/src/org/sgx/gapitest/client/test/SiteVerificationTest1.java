@@ -1,5 +1,6 @@
 package org.sgx.gapitest.client.test;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import org.sgx.gapi.client.GAPI;
@@ -16,7 +17,7 @@ import org.sgx.gapi.client.loader.GAPILoaderCallback;
 import org.sgx.gapi.client.loader.ModuleDefinition;
 import org.sgx.gapi.client.util.GAPILoadCallback;
 import org.sgx.gapi.client.util.GAPIUtil;
-import org.sgx.gapitest.client.TestConstants;
+import org.sgx.gapitest.client.GAPITestConstants;
 import org.sgx.gapitest.client.app.AbstractTest;
 import org.sgx.gapitest.client.app.Gallery;
 
@@ -55,11 +56,11 @@ public class SiteVerificationTest1 extends AbstractTest {
 		RootPanel.get().add(authButton);
 		AuthUITrigger authUITrigger = GAPIUtil.buildAuthUITriggerFrom(authButton); 		
 		
-		clientId = TestConstants.CLIENT_ID;
+		clientId = GAPITestConstants.CLIENT_ID;
 
 		scope = "https://www.googleapis.com/auth/siteverification";
 
-		apiKey = TestConstants.API_KEY;
+		apiKey = GAPITestConstants.API_KEY;
 
 		GAPI.get().client().setApiKey(apiKey);		
 
@@ -118,7 +119,9 @@ public class SiteVerificationTest1 extends AbstractTest {
 
 	@Override
 	public Map<String, TextResource> getResources() {
-		return null;
+		HashMap<String, TextResource> m = new HashMap<String, TextResource>(); 
+		m.put("SiteVerificationTest1.java", TestResources.INSTANCE.SiteVerificationTest1());
+		return m;
 	}
 
 	@Override
