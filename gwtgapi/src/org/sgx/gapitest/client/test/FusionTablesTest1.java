@@ -5,17 +5,24 @@ import java.util.Map;
 
 import org.sgx.gapi.client.GAPI;
 import org.sgx.gapi.client.apis.GAPICallback;
+import org.sgx.gapi.client.apis.fusiontables.FTModule;
+import org.sgx.gapi.client.apis.fusiontables.FTTable;
 import org.sgx.gapi.client.apis.fusiontables.table.TableListRequest;
 import org.sgx.gapi.client.apis.fusiontables.table.TableListResult;
 import org.sgx.gapi.client.auth.AuthCallback;
 import org.sgx.gapi.client.auth.AuthResponse;
 import org.sgx.gapi.client.client.ClientLoadCallback;
+import org.sgx.gapi.client.loader.AuthDefinition;
+import org.sgx.gapi.client.loader.AuthUITrigger;
 import org.sgx.gapi.client.loader.AuthUtil;
+import org.sgx.gapi.client.loader.GAPILoader;
+import org.sgx.gapi.client.loader.GAPILoaderCallback;
+import org.sgx.gapi.client.loader.ModuleDefinition;
+import org.sgx.gapi.client.loader.ModuleDefinitionImpl;
 import org.sgx.gapi.client.util.GAPILoadCallback;
+import org.sgx.gapi.client.util.GAPIUtil;
 import org.sgx.gapitest.client.GAPITestConstants;
-import org.sgx.gapitest.client.app.Gallery;
-import org.sgx.gapitest.client.app.Test;
-import org.sgx.jsutil.client.JsUtil;
+import org.sgx.gapitest.client.app.AbstractTest;
 
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.dom.client.Element;
@@ -25,17 +32,18 @@ import com.google.gwt.user.client.ui.RootPanel;
 
 /**
  * 
- * This test is similar uses oauth for accessing fusiontables. Use java class AuthUtil for easing the auth stuff.
+ * This test is similar uses oauth for accessing fusiontables. 
+ * Use java class AuthUtil for easing the auth stuff but not the .
  * 
  * @author sg
  * 
  */
-public class GAPITest2 implements EntryPoint, Test {
+public class FusionTablesTest1 extends AbstractTest implements EntryPoint {
 
 	private String clientId;
 	private String apiKey;
 	private String scope;
-	private GAPI gapi;
+//	private GAPI gapi;
 	private Button authButton;
 
 	@Override
@@ -58,47 +66,60 @@ public class GAPITest2 implements EntryPoint, Test {
 
 		authButton = new Button("authenticate");
 		RootPanel.get().add(authButton);
+		AuthUITrigger authUITrigger = GAPIUtil.buildAuthUITriggerFrom(authButton); 	
+		
+//		gapi = GAPI.get();
 
-		gapi = GAPI.get();
+		GAPI.get().client().setApiKey(apiKey);
 
-		gapi.client().setApiKey(apiKey);
-
-		AuthUtil authUtil = new AuthUtil();
-		authUtil.authenticate(clientId, authButton, scope, new AuthCallback() {
-
+		
+		ModuleDefinition moduleDef = new FTModule(); //("siteverification", "v1");		
+		AuthDefinition authDefinition = new AuthDefinition(clientId, scope, authUITrigger); 
+		GAPILoader loader = new GAPILoader(authDefinition, moduleDef); 
+		loader.load(new GAPILoaderCallback() {			
 			@Override
-			public void authenticated(AuthResponse r) {
-				makeApiCall();
+			public void loaded(AuthResponse authResp) {
+				makeApiCall(); 
 			}
-		});
+		}); 
+		
+//		AuthUtil authUtil = new AuthUtil();
+//		authUtil.authenticate(clientId, authButton, scope, new AuthCallback() {
+//
+//			@Override
+//			public void authenticated(AuthResponse r) {
+//				makeApiCall();
+//			}
+//		});
 	}
 
 	protected void makeApiCall() {
-		gapi.client().load("fusiontables", "v1", new ClientLoadCallback() {
-			@Override
-			public void loaded() {
-
+//		gapi.client().load("fusiontables", "v1", new ClientLoadCallback() {
+//			@Override
+//			public void loaded() {
 				new TableListRequest().execute(new GAPICallback<TableListResult>() {
 					@Override
 					public void call(TableListResult result) {
 						if (result.error() != null) {
-							Gallery.getInstance().getConsole().append("error : " + result.error()); 
-							return;
-						}
-						else {
-							Gallery.getInstance().getConsole().append("RESULT2: " + JsUtil.dumpObj(result));
+							log("error : " + result.error().message());
+						} else {
+							String s = "";
+							for (FTTable table : result.itemsCol()) {
+								s += ", " + table.name();
+							}
+							log("TABLES names: " + s);
+							// log("RESULT2: " + JsUtil.dumpObj(result));
 						}
 					}
 				});
-
-			}
-		});
+//			}
+//		});
 	}
 
 	// test stuff
 	@Override
 	public String getId() {
-		return "FusionTables";
+		return "FusionTables1";
 	}
 
 	@Override
@@ -108,8 +129,8 @@ public class GAPITest2 implements EntryPoint, Test {
 
 	@Override
 	public Map<String, TextResource> getResources() {
-		HashMap<String, TextResource> m = new HashMap<String, TextResource>(); 
-		m.put("FusionTables.java", TestResources.INSTANCE.GAPITest2());
+		HashMap<String, TextResource> m = new HashMap<String, TextResource>();
+		m.put("FusionTables.java", TestResources.INSTANCE.FusionTablesTest1());
 		return m;
 	}
 

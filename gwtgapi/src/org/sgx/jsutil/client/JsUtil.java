@@ -2,7 +2,9 @@ package org.sgx.jsutil.client;
 
 import java.util.Collection;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Map;
 
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.core.client.JsArray;
@@ -673,4 +675,33 @@ public static String dump(Object[] els) {
 public static native final boolean isArray(JavaScriptObject o)/*-{ 
 	return $wnd.Object.prototype.toString.call( o ) === '[object Array]' ; 
 }-*/;
+
+public static Map<String, Boolean> toMapBoolean(JsObject o) {
+	Map<String, Boolean> m = new HashMap<String, Boolean>(); 
+	JsArrayString arr = o.objProps();
+	for (int i = 0; i < arr.length(); i++) {
+		String name = arr.get(i); 
+		boolean value = castToBoolean(o, name);
+		m.put(name,value); 
+	}
+	return m; 
+}
+public static Map<String, String> toMapString(JsObject o) {
+	Map<String, String> m = new HashMap<String, String>(); 
+	JsArrayString arr = o.objProps();
+	for (int i = 0; i < arr.length(); i++) {
+		String name = arr.get(i); 
+		String value = castToString(o, name);
+		m.put(name,value); 
+	}
+	return m; 
+}
+
+public static native String castToString(JsObject o, String name)/*-{
+return o[name]; 
+}-*/;
+public static native boolean castToBoolean(JsObject o, String name)/*-{
+	return o[name]; 
+}-*/;
+
 }

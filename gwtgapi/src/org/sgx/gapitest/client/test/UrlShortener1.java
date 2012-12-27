@@ -16,6 +16,7 @@ import org.sgx.gapi.client.client.HttpRequest;
 import org.sgx.gapi.client.loader.GAPILoader;
 import org.sgx.gapi.client.loader.GAPILoaderCallback;
 import org.sgx.gapi.client.loader.ModuleDefinition;
+import org.sgx.gapi.client.loader.ModuleDefinitionImpl;
 import org.sgx.gapi.client.util.GAPILoadCallback;
 import org.sgx.gapitest.client.GAPITestConstants;
 import org.sgx.gapitest.client.app.Gallery;
@@ -59,7 +60,7 @@ public class UrlShortener1 implements EntryPoint, Test {
 
 		gapi.client().setApiKey(apiKey);
 		
-		ModuleDefinition moduleDef = new ModuleDefinition("urlshortener", "v1");
+		ModuleDefinition moduleDef = new ModuleDefinitionImpl("urlshortener", "v1");
 		GAPILoader loader = new GAPILoader(moduleDef); 
 		loader.load(new GAPILoaderCallback() {			
 			@Override

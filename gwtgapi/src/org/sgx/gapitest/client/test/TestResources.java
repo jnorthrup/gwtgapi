@@ -11,13 +11,16 @@ public interface TestResources extends ClientBundle {
 	@Source("GAPITest1.java")
 	public TextResource GAPITest1();
 
-	@Source("GAPITest2.java")
-	public TextResource GAPITest2();
+	@Source("FusionTablesTest1.java")
+	public TextResource FusionTablesTest1();
 	
 	@Source("SiteVerificationTest1.java")
 	public TextResource SiteVerificationTest1();
 	
 	@Source("UrlShortener1.java")
 	public TextResource UrlShortener1();
+	
+	@Source("DriveTest1.java")
+	public TextResource DriveTest1();
 	
 }
