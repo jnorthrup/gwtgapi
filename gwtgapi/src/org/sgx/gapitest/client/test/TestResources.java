@@ -23,4 +23,10 @@ public interface TestResources extends ClientBundle {
 	@Source("DriveTest1.java")
 	public TextResource DriveTest1();
 	
+	@Source("TranslateTest1.java")
+	public TextResource TranslateTest1();
+	
+	@Source("WebFontsTest1.java")
+	public TextResource WebFontsTest1();
+	
 }
