@@ -65,4 +65,18 @@ public class GAPIUtil {
 		};
 	}
 
+	public static void paramPut(JsObject params, String name, String val) {
+		if(val!=null)
+			params.objPut(name, val);		
+	}
+
+	public static void paramPut(JsObject params, String name, int val, int def) {
+		if(val!=def)
+			params.objPut(name, val);			
+	}
+
+	public static void paramPut(JsObject params, String name, boolean val) {
+		params.objPut(name, val);			
+	}
+
 }
