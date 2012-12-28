@@ -19,8 +19,9 @@ import org.sgx.gapi.client.loader.ModuleDefinition;
 import org.sgx.gapi.client.loader.ModuleDefinitionImpl;
 import org.sgx.gapi.client.util.GAPILoadCallback;
 import org.sgx.gapitest.client.GAPITestConstants;
+import org.sgx.gapitest.client.GAPITestTextResource;
+import org.sgx.gapitest.client.Test;
 import org.sgx.gapitest.client.app.Gallery;
-import org.sgx.gapitest.client.app.Test;
 import org.sgx.jsutil.client.JsObject;
 import org.sgx.jsutil.client.JsUtil;
 
@@ -99,10 +100,6 @@ public class UrlShortener1 implements EntryPoint, Test {
 			}
 		}); 
 		
-		
-		
-		
-
 		//another way : manually create the request:
 		
 		ClientRequest reqDef = ClientRequest.create()
@@ -118,8 +115,6 @@ public class UrlShortener1 implements EntryPoint, Test {
 					Gallery.getInstance().log("Long url : "+resp.objGetString("longUrl"));
 			}
 		}); 
-		
-		
 	}
 
 	
@@ -134,9 +129,9 @@ public class UrlShortener1 implements EntryPoint, Test {
 	}
 
 	@Override
-	public Map<String, TextResource> getResources() {
-		HashMap<String, TextResource> m = new HashMap<String, TextResource>(); 
-		m.put("UrlShortener1.java", TestResources.INSTANCE.UrlShortener1());
+	public Map<String, GAPITestTextResource> getResources() {		
+		HashMap<String, GAPITestTextResource> m = new HashMap<String, GAPITestTextResource>();
+		m.put("UrlShortener1.java", new GAPITestTextResource(TestResources.INSTANCE.UrlShortener1()));
 		return m;
 	}
 

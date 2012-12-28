@@ -18,8 +18,9 @@ import org.sgx.gapi.client.loader.ModuleDefinition;
 import org.sgx.gapi.client.loader.ModuleDefinitionImpl;
 import org.sgx.gapi.client.util.GAPILoadCallback;
 import org.sgx.gapi.client.util.GAPIUtil;
+import org.sgx.gapitest.client.AbstractTest;
 import org.sgx.gapitest.client.GAPITestConstants;
-import org.sgx.gapitest.client.app.AbstractTest;
+import org.sgx.gapitest.client.GAPITestTextResource;
 import org.sgx.gapitest.client.app.Gallery;
 
 import com.google.gwt.dom.client.Element;
@@ -119,9 +120,9 @@ public class SiteVerificationTest1 extends AbstractTest {
 	}
 
 	@Override
-	public Map<String, TextResource> getResources() {
-		HashMap<String, TextResource> m = new HashMap<String, TextResource>(); 
-		m.put("SiteVerificationTest1.java", TestResources.INSTANCE.SiteVerificationTest1());
+	public Map<String, GAPITestTextResource> getResources() {
+		HashMap<String, GAPITestTextResource> m = new HashMap<String, GAPITestTextResource>();
+		m.put("SiteVerificationTest1.java", new GAPITestTextResource(TestResources.INSTANCE.SiteVerificationTest1()));
 		return m;
 	}
 

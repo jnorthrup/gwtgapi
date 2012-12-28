@@ -1,8 +1,10 @@
 package org.sgx.gapitest.client.app.ui;
 
+import org.sgx.gapitest.client.GAPITestTextResource;
+import org.sgx.gapitest.client.GAPITestTextResourceCallback;
+import org.sgx.gapitest.client.Test;
 import org.sgx.gapitest.client.UIUtils;
 import org.sgx.gapitest.client.app.Gallery;
-import org.sgx.gapitest.client.app.Test;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Element;
@@ -31,14 +33,21 @@ public class MainLayout extends Composite {
 			public void onClick(ClickEvent event) {
 				Test test = Gallery.getInstance().getCurrentTest(); 
 				
-				String resStr = "",resName=""; 				
-				for(String n : test.getResources().keySet()) {
-					TextResource r = test.getResources().get(n); 
-					resStr=r.getText(); 
-					resName=n;
+//				String resStr = "",resName=""; 				
+				for(final String n : test.getResources().keySet()) {
+					GAPITestTextResource r = test.getResources().get(n);
+					r.getText(new GAPITestTextResourceCallback() {
+						
+						@Override
+						public void call(String text) {
+							UIUtils.showText(n, text);	
+						}
+					}); 
+//					resStr=r.getText(); 
+//					resName=n;
 					break;
 				}
-				UIUtils.showText(resName, resStr);	
+				
 			}
 		}); 
 	}

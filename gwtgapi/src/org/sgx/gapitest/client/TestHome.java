@@ -3,7 +3,6 @@ package org.sgx.gapitest.client;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.sgx.gapitest.client.app.Test;
 import org.sgx.gapitest.client.test.CustomSearchTest1;
 import org.sgx.gapitest.client.test.DriveTest1;
 import org.sgx.gapitest.client.test.GAPITest1;

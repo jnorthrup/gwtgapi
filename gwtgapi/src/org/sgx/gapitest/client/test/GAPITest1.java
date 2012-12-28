@@ -18,10 +18,11 @@ import org.sgx.gapi.client.client.ClientRequest;
 import org.sgx.gapi.client.client.ClientRequestCallback;
 import org.sgx.gapi.client.client.HttpRequest;
 import org.sgx.gapi.client.util.GAPILoadCallback;
+import org.sgx.gapitest.client.AbstractTest;
 import org.sgx.gapitest.client.GAPITestConstants;
-import org.sgx.gapitest.client.app.AbstractTest;
+import org.sgx.gapitest.client.GAPITestTextResource;
+import org.sgx.gapitest.client.Test;
 import org.sgx.gapitest.client.app.Gallery;
-import org.sgx.gapitest.client.app.Test;
 import org.sgx.jsutil.client.JsObject;
 import org.sgx.jsutil.client.JsUtil;
 import org.sgx.jsutil.client.SimpleCallback;
@@ -107,7 +108,6 @@ public class GAPITest1 extends AbstractTest implements EntryPoint, Test {
 			}
 		}, 1);
 
-		// System.out.println("gapi loaded");
 	}
 
 	void checkAuth() {
@@ -118,7 +118,6 @@ public class GAPITest1 extends AbstractTest implements EntryPoint, Test {
 		gapi.auth().authorize(AuthRequest.create().client_id(clientId).scope(scope).immediate(false), handleAuthResult);
 	}
 
-	// 192.168.1.102:8888/index.html
 	protected void makeApiCall() {
 		gapi.client().load("plus", "v1", new ClientLoadCallback() {
 
@@ -166,9 +165,9 @@ public class GAPITest1 extends AbstractTest implements EntryPoint, Test {
 	}
 
 	@Override
-	public Map<String, TextResource> getResources() {
-		HashMap<String, TextResource> m = new HashMap<String, TextResource>(); 
-		m.put("GAPITest1.java", TestResources.INSTANCE.GAPITest1());
+	public Map<String, GAPITestTextResource> getResources() {
+		HashMap<String, GAPITestTextResource> m = new HashMap<String, GAPITestTextResource>();
+		m.put("GAPITest1.java", new GAPITestTextResource(TestResources.INSTANCE.GAPITest1()));
 		return m;
 	}
 

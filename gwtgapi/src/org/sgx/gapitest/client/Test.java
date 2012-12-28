@@ -1,4 +1,4 @@
-package org.sgx.gapitest.client.app;
+package org.sgx.gapitest.client;
 
 import java.util.Map;
 
@@ -10,5 +10,5 @@ void test(Element parent);
 String getDescription();
 String getId(); 
 String [] getTags();
-Map<String, TextResource> getResources(); 
+Map<String, GAPITestTextResource> getResources(); 
 }

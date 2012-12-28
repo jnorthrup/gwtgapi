@@ -29,7 +29,7 @@ import com.google.gwt.user.client.ui.RootPanel;
  * @author sg
  * 
  */
-public class TranslateTest1 extends AbstractTest implements EntryPoint {
+public class BooksTest1 extends AbstractTest implements EntryPoint {
 
 	@Override
 	public void test(Element parent) {
@@ -84,9 +84,10 @@ public class TranslateTest1 extends AbstractTest implements EntryPoint {
 
 	@Override
 	public Map<String, GAPITestTextResource> getResources() {
-		HashMap<String, GAPITestTextResource> m = new HashMap<String, GAPITestTextResource>();
-		m.put("TranslateTest1.java", new GAPITestTextResource(TestResources.INSTANCE.TranslateTest1()));
-		return m;		
+		return null; 
+//		HashMap<String, TextResource> m = new HashMap<String, TextResource>(); 
+//		m.put("TranslateTest1.java", TestResources.INSTANCE.TranslateTest1());
+//		return m;
 	}
 
 	@Override

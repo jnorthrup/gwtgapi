@@ -13,12 +13,12 @@ import org.sgx.gapi.client.loader.GAPILoader;
 import org.sgx.gapi.client.loader.GAPILoaderCallback;
 import org.sgx.gapi.client.loader.ModuleDefinition;
 import org.sgx.gapi.client.util.GAPILoadCallback;
+import org.sgx.gapitest.client.AbstractTest;
 import org.sgx.gapitest.client.GAPITestConstants;
-import org.sgx.gapitest.client.app.AbstractTest;
+import org.sgx.gapitest.client.GAPITestTextResource;
 
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.dom.client.Element;
-import com.google.gwt.resources.client.TextResource;
 import com.google.gwt.user.client.ui.RootPanel;
 
 /**
@@ -86,9 +86,9 @@ public class WebFontsTest1 extends AbstractTest implements EntryPoint {
 	}
 
 	@Override
-	public Map<String, TextResource> getResources() {
-		HashMap<String, TextResource> m = new HashMap<String, TextResource>();
-		m.put("WebFontsTest1.java", TestResources.INSTANCE.WebFontsTest1());
+	public Map<String, GAPITestTextResource> getResources() {
+		HashMap<String, GAPITestTextResource> m = new HashMap<String, GAPITestTextResource>();
+		m.put("WebFontsTest1.java", new GAPITestTextResource(TestResources.INSTANCE.WebFontsTest1()));
 		return m;
 	}
 

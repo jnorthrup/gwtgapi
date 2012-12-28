@@ -1,5 +1,6 @@
 package org.sgx.gapitest.client.test;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import org.sgx.gapi.client.GAPI;
@@ -20,8 +21,9 @@ import org.sgx.gapi.client.loader.ModuleDefinition;
 import org.sgx.gapi.client.loader.ModuleDefinitionImpl;
 import org.sgx.gapi.client.util.GAPILoadCallback;
 import org.sgx.gapitest.client.GAPITestConstants;
+import org.sgx.gapitest.client.GAPITestTextResource;
+import org.sgx.gapitest.client.Test;
 import org.sgx.gapitest.client.app.Gallery;
-import org.sgx.gapitest.client.app.Test;
 import org.sgx.jsutil.client.JsObject;
 import org.sgx.jsutil.client.JsUtil;
 
@@ -99,8 +101,10 @@ public class CustomSearchTest1 implements EntryPoint, Test {
 	}
 
 	@Override
-	public Map<String, TextResource> getResources() {
-		return null;
+	public Map<String, GAPITestTextResource> getResources() {
+		HashMap<String, GAPITestTextResource> m = new HashMap<String, GAPITestTextResource>();
+		m.put("CustomSearchTest1.java", new GAPITestTextResource(TestResources.INSTANCE.CustomSearchTest1()));
+		return m;
 	}
 
 	@Override

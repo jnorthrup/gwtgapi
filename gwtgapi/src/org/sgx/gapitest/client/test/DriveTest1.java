@@ -18,8 +18,9 @@ import org.sgx.gapi.client.loader.GAPILoaderCallback;
 import org.sgx.gapi.client.loader.ModuleDefinition;
 import org.sgx.gapi.client.util.GAPILoadCallback;
 import org.sgx.gapi.client.util.GAPIUtil;
+import org.sgx.gapitest.client.AbstractTest;
 import org.sgx.gapitest.client.GAPITestConstants;
-import org.sgx.gapitest.client.app.AbstractTest;
+import org.sgx.gapitest.client.GAPITestTextResource;
 
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.resources.client.TextResource;
@@ -114,10 +115,14 @@ public class DriveTest1 extends AbstractTest {
 	}
 
 	@Override
-	public Map<String, TextResource> getResources() {
-		HashMap<String, TextResource> m = new HashMap<String, TextResource>(); 
-		m.put("DriveTest1.java", TestResources.INSTANCE.DriveTest1());
+	public Map<String, GAPITestTextResource> getResources() {
+		HashMap<String, GAPITestTextResource> m = new HashMap<String, GAPITestTextResource>();
+		m.put("DriveTest1.java", new GAPITestTextResource(TestResources.INSTANCE.DriveTest1()));
 		return m;
+//		return null; 
+//		HashMap<String, TextResource> m = new HashMap<String, TextResource>(); 
+//		m.put("DriveTest1.java", TestResources.INSTANCE.DriveTest1());
+//		return m;
 	}
 
 	@Override

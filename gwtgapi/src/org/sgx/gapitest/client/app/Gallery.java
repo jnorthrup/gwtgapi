@@ -2,6 +2,7 @@ package org.sgx.gapitest.client.app;
 
 import java.util.Map;
 
+import org.sgx.gapitest.client.Test;
 import org.sgx.gapitest.client.TestHome;
 import org.sgx.gapitest.client.app.ui.Console;
 import org.sgx.gapitest.client.app.ui.MainLayout;
