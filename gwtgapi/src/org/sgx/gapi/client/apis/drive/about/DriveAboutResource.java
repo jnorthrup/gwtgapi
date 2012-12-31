@@ -15,25 +15,25 @@ public class DriveAboutResource extends GAPIResult {
 	protected DriveAboutResource() {
 	}
 
-	/**
-	 * The ETag of the item.
-	 * 
-	 * @return
-	 */
-	public native final String etag() /*-{
-		return this["etag"];
-	}-*/;
-
-	/**
-	 * The ETag of the item.
-	 * 
-	 * @param val
-	 * @return this - for setter chaining
-	 */
-	public native final DriveAboutResource etag(String val) /*-{
-		this["etag"] = val;
-		return this;
-	}-*/;
+	// /**
+	// * The ETag of the item.
+	// *
+	// * @return
+	// */
+	// public native final String etag() /*-{
+	// return this["etag"];
+	// }-*/;
+	//
+	// /**
+	// * The ETag of the item.
+	// *
+	// * @param val
+	// * @return this - for setter chaining
+	// */
+	// public native final DriveAboutResource etag(String val) /*-{
+	// this["etag"] = val;
+	// return this;
+	// }-*/;
 
 	/**
 	 * A link back to this item.

@@ -3,6 +3,8 @@ package org.sgx.gapi.client.client;
 import org.sgx.jsutil.client.JsFunction;
 import org.sgx.jsutil.client.JsObject;
 
+import com.google.gwt.core.client.JavaScriptObject;
+
 
 /**
  * An object encapsulating the various arguments for this method. The path is required, the rest are optional.
@@ -99,7 +101,7 @@ public class ClientRequest extends JsObject {
 	}-*/;
 
 	/**
-	 * 
+	 * sets this request body
 	 * @param val
 	 * @return this - for setter chaining
 	 */
@@ -107,6 +109,17 @@ public class ClientRequest extends JsObject {
 		this["body"] = val;
 		return this;
 	}-*/;
+	
+	/**
+	 * sets this request body
+	 * @param val
+	 * @return this - for setter chaining
+	 */
+	public native final ClientRequest body(JavaScriptObject val) /*-{
+		this["body"] = @org.sgx.gapi.client.util.GAPIUtil::toJSON(Lorg/sgx/jsutil/client/JsObject;)(val);
+		return this;
+	}-*/;
+
 
 	/**
 	 * If supplied, the request is executed immediately and no gapi.client.HttpRequest object is returned.

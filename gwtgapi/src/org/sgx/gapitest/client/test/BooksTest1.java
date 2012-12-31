@@ -5,6 +5,9 @@ import java.util.Map;
 
 import org.sgx.gapi.client.GAPI;
 import org.sgx.gapi.client.apis.GAPICallback;
+import org.sgx.gapi.client.apis.books.BooksModule;
+import org.sgx.gapi.client.apis.books.VolumeList;
+import org.sgx.gapi.client.apis.books.VolumeListRequest;
 import org.sgx.gapi.client.apis.translate.TranslateModule;
 import org.sgx.gapi.client.apis.translate.TranslateRequest;
 import org.sgx.gapi.client.apis.translate.TranslateResponse;
@@ -16,6 +19,8 @@ import org.sgx.gapi.client.util.GAPILoadCallback;
 import org.sgx.gapitest.client.AbstractTest;
 import org.sgx.gapitest.client.GAPITestConstants;
 import org.sgx.gapitest.client.GAPITestTextResource;
+import org.sgx.gapitest.client.app.Gallery;
+import org.sgx.jsutil.client.JsUtil;
 
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.dom.client.Element;
@@ -24,7 +29,7 @@ import com.google.gwt.user.client.ui.RootPanel;
 
 /**
  * 
- * show how to use the translate API. No auth required. 
+ * show how to use the books API. No auth required. 
  * 
  * @author sg
  * 
@@ -44,7 +49,7 @@ public class BooksTest1 extends AbstractTest implements EntryPoint {
 	protected void main() {
 		GAPI.get().client().setApiKey(GAPITestConstants.API_KEY);
 		
-		ModuleDefinition moduleDef = new TranslateModule(); 
+		ModuleDefinition moduleDef = new BooksModule(); 
 		GAPILoader loader = new GAPILoader(moduleDef); 
 		loader.load(new GAPILoaderCallback() {			
 			@Override
@@ -58,36 +63,35 @@ public class BooksTest1 extends AbstractTest implements EntryPoint {
 	protected void callApi() {
 		
 		//java friendly way
-		new TranslateRequest("en", "es", "doing").execute(new GAPICallback<TranslateResponse>() {
+		new VolumeListRequest("zaraturstra").execute(new GAPICallback<VolumeList>() {
 			
 			@Override
-			public void call(TranslateResponse result) {
-				if(result.error()!=null)
-					log("translate error: "+result.error().message());
-				else
-					log("translate : "+result.data().translations().get(0).translatedText());
+			public void call(VolumeList resp) {
+				if(resp.error()!=null) 
+					Gallery.getInstance().log("ERROR: "+JsUtil.dumpObj(resp.error(), true));
+				else 
+					Gallery.getInstance().log("Long url : "+resp.items().length());				
 			}
-		}); 
+		});
 		
 	}
 
 	
 	@Override
 	public String getId() {
-		return "translate1";
+		return "books1";
 	}
 	
 	@Override
 	public String getDescription() {
-		return "show how to use the translate API. No auth required. ";
+		return "show how to use the books API. No auth required. ";
 	}
 
 	@Override
 	public Map<String, GAPITestTextResource> getResources() {
-		return null; 
-//		HashMap<String, TextResource> m = new HashMap<String, TextResource>(); 
-//		m.put("TranslateTest1.java", TestResources.INSTANCE.TranslateTest1());
-//		return m;
+		HashMap<String, GAPITestTextResource> m = new HashMap<String, GAPITestTextResource>();
+		m.put("BooksTest1.java", new GAPITestTextResource(TestResources.INSTANCE.BooksTest1()));
+		return m;
 	}
 
 	@Override

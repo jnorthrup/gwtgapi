@@ -10,6 +10,7 @@ import com.google.gwt.dom.client.ScriptElement;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.HasClickHandlers;
+import com.google.gwt.json.client.JSONObject;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.FocusWidget;
@@ -77,6 +78,10 @@ public class GAPIUtil {
 
 	public static void paramPut(JsObject params, String name, boolean val) {
 		params.objPut(name, val);			
+	}
+
+	public static String toJSON(JsObject params) {
+		return new JSONObject(params).toString(); 
 	}
 
 }

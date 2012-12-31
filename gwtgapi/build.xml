@@ -3,167 +3,131 @@
 -->
 <project name="gwtgapi" default="jar">
 
-	<property file="build.properties"/>
+	<property file="build.properties" />
 	<description>
         make java doc of all this java project
 		@author: sgurin
     </description>
 
-	
-	
-	
-	
-	
+
+
+
+
+
 	<target name="all">
-		<antcall target="js"/>
-		<antcall target="clean"/>
-		<antcall target="jar"/>
+		<antcall target="js" />
+		<antcall target="clean" />
+		<antcall target="jar" />
 	</target>
-	
-	<target name="compile" depends="clean">
+
+	<target name="compile-all" depends="clean">
 		<antcall target="javac">
 		</antcall>
 		<antcall target="gwtc">
-			<param name="moduleName" value="org.sgx.jsutil.JsUtil"/>
-		</antcall>		
-		<antcall target="gwtc">
-			<param name="moduleName" value="org.sgx.gapi.GAPI"/>
+			<param name="moduleName" value="org.sgx.jsutil.JsUtil" />
 		</antcall>
 		<antcall target="gwtc">
-			<param name="moduleName" value="org.sgx.gapitest.GAPITest1"/>
+			<param name="moduleName" value="org.sgx.gapi.GAPI" />
 		</antcall>
-	</target>	
-	
+		<antcall target="gwtc">
+			<param name="moduleName" value="org.sgx.gapitest.GAPITest1" />
+		</antcall>
+	</target>
+	<target name="compile-test" depends="clean">
+		<antcall target="javac">
+		</antcall>
+		<antcall target="gwtc">
+			<param name="moduleName" value="org.sgx.gapitest.GAPITest1" />
+		</antcall>
+	</target>
 	<target name="compile-core" depends="clean">
 		<antcall target="javac">
 		</antcall>
 		<antcall target="gwtc">
-			<param name="moduleName" value="org.sgx.gapi.GAPI"/>
+			<param name="moduleName" value="org.sgx.gapi.GAPI" />
 		</antcall>
-	</target>	
+	</target>
+
 	
-<!-- 	<target name="_raphael4gwtgallery_gwtc"> -->
-<!-- 		<antcall target="gwtc"> -->
-<!-- 			<param name="moduleName" value="org.sgx.raphael4gwt.Raphael4GwtTest"/> -->
-<!-- 		</antcall> -->
-<!-- 	</target> -->
+	
 	
 	<target name="clean" depends="">
-		<delete dir="dist"/>
-		<delete dir="javadoc"/>
-		<delete dir="gwt-unitCache"/>
-		<delete dir="war/WEB-INF/deploy"/>
-<!-- 		<delete dir="war/org.sgx.raphael4gwt.Raphael4Gwt"/> -->
-<!-- 		<delete dir="war/org.sgx.raphael4gwt.Raphael4GwtTest"/> -->
-<!-- 		<delete dir="war/org.sgx.raphael4gwt.GRaphael4Gwt"/> -->
-<!-- 		<delete dir="war/org.sgx.raphael4gwt.GRaphael4GwtTest"/> -->
-		<delete dir="www-test"/>
-		<delete dir="classes"/>
-		<delete dir="java2html"/>		
+		<delete dir="dist" />
+		<delete dir="javadoc" />
+		<delete dir="gwt-unitCache" />
+		<delete dir="war/WEB-INF/deploy" />
+		<delete dir="org.sgx.gapi.GAPI" />
+		<delete dir="org.sgx.gapi.client.test.GAPITest1" />
+
+		<!-- 		<delete dir="war/org.sgx.raphael4gwt.Raphael4GwtTest"/> -->
+		<!-- 		<delete dir="war/org.sgx.raphael4gwt.GRaphael4Gwt"/> -->
+		<!-- 		<delete dir="war/org.sgx.raphael4gwt.GRaphael4GwtTest"/> -->
+		<delete dir="www-test" />
+		<delete dir="classes" />
+		<delete dir="java2html" />
 	</target>
+
 	
-<!-- 	<property name="raphael4gwtRootPackage"  -->
-<!-- 		value="/src/org/sgx/raphael4gwt/"></property> -->
-	
-<!-- 	<property name="raphael4gwtJarExclude"  -->
-<!-- 			value="org/sgx/raphael4gwt/test/,org/sgx/raphael4gwt/gtest/,org/sgx/raphael4gwt/public-raphael-test/,org/sgx/raphael4gwt/public-tut/,org/sgx/raphael4gwt/tut/"></property> -->
-	
-	<!--
-	 excludes="${raphael4gwtJarExclude}"
-	 	<property name="raphael4gwtJarExclude" 
-		value="${raphael4gwtRootPackage}/test,${raphael4gwtRootPackage}/gtest"></property>
-		-->
-	<target name="jar" depends="compile-core">
-		<mkdir dir="dist"/>
+
+	<target name="jar"  depends="compile-core"
+		>
+		<mkdir dir="dist" />
+		<delete file="dist/gwtgapi-0.01.jar"></delete>
 		<jar destfile="dist/gwtgapi-${gwtgapi.version}.jar">
 			
-			<!--<fileset dir="classes" excludes="**/Test.class" />
-			<fileset dir="src" excludes="**/Test.java" />
-			-->
+			<fileset dir="classes">	
+				<exclude name="org/sgx/gapitest/"></exclude>	
+			</fileset>
 			
-<!-- 			<fileset dir="classes" excludes="${raphael4gwtJarExclude}" /> -->
-<!-- 			<fileset dir="src" excludes="${raphael4gwtJarExclude}" /> -->
-			
+			<fileset dir="src">	
+				<exclude name="org/sgx/gapitest/"></exclude>	
+			</fileset>
 			
 		</jar>
 	</target>
-		
+	
+	
 
-	<!-- make a .jar using current dev-mode .class generated files in war/WEB-INF/classes. do not use these generated jars! -->
-<!-- 	<target name="_fast_jar_" depends=""> -->
-<!-- 		<mkdir dir="dist"/> -->
-<!-- 		<jar destfile="dist/raphael4gwt-${raphael4gwt.version}.jar"> -->
-<!-- 			<fileset dir="war/WEB-INF/classes" excludes="**/Test.class" /> -->
-<!-- 			<fileset dir="src" excludes="**/Test.java" /> -->
-<!-- 		</jar> -->
-<!-- 	</target> -->
-	
-	
-	
-	
-	
-	
-<!-- 	<target name="js"> -->
-<!-- 		<exec dir="src/org/sgx/raphael4gwt/public" executable="sh" > -->
-<!-- 			<arg line="preparejs.sh"/> -->
-<!-- 		</exec> -->
-		
-<!-- 		<exec dir="src/org/sgx/raphael4gwt/public-graphael/graphael" executable="sh" > -->
-<!-- 			<arg line="preparejs.sh"/> -->
-<!-- 		</exec> -->
-<!-- 	</target> -->
-	
-<!-- 	<target name="publishRaphael4gwtGallery"> -->
-<!-- 		<exec dir="." executable="sh" > -->
-<!-- 			<arg line="publishRaphael4gwtGallery.sh"/> -->
-<!-- 		</exec> -->
-<!-- 	</target> -->
-	
 	<target name="java2html">
-		<mkdir dir="java2html"/>
-		<java failonerror="true" fork="true"  classname="j2h">
+		<mkdir dir="java2html" />
+		<java failonerror="true" fork="true" classname="j2h">
 			<classpath>
-				<pathelement location="j2h.jar" />			
+				<pathelement location="j2h.jar" />
 			</classpath>
-			
+
 			<arg value="-d" />
 			<arg value="java2html" />
-			
+
 			<arg value="-js" />
 			<arg value="src" />
-										
+
 		</java>
 	</target>
-				
-	
-	
-	
-	
-	
+
+
+
 	<path id="javac.class.path">
 		<pathelement location="${gwt.sdk}/gwt-user.jar" />
 		<fileset dir="${gwt.sdk}" includes="gwt-dev*.jar" />
 		<fileset dir="war/WEB-INF/lib" includes="**/*.jar" />
 	</path>
-	
+
 	<target name="javac">
-		<mkdir dir="classes"/>
-		<javac srcdir="src"
-	         destdir="classes"
-	         classpathref="javac.class.path">
-			
-			<compilerarg line="-encoding utf-8"/>
-			
+		<mkdir dir="classes" />
+		<javac srcdir="src" destdir="classes" classpathref="javac.class.path">
+
+			<compilerarg line="-encoding utf-8" />
+
 		</javac>
 	</target>
-	
-	
 
 
-	
-	
 
-	
+
+
+
+
+
 	<path id="gwtc.class.path">
 		<!--<pathelement location="${gwt.sdk}/gwt-user.jar" />-->
 		<pathelement location="classes" />
@@ -175,50 +139,49 @@
 		<java failonerror="true" fork="true" classname="com.google.gwt.dev.Compiler">
 			<classpath>
 				<pathelement location="src" />
-				<path refid="gwtc.class.path" />				
+				<path refid="gwtc.class.path" />
 			</classpath>
-			
-			<jvmarg value="-Xmx256M" />	
-			
-			<arg value="-strict"></arg>
-			
+
+			<jvmarg value="-Xmx256M" />
+
+			<arg value="-strict">
+			</arg>
+
 			<!-- Additional arguments like -style PRETTY or -logLevel DEBUG 		
 			<arg value="-draftCompile"></arg>			
 			<arg value="-style"></arg>
 			<arg value="DETAILED"></arg>-->
-			
+
 			<arg value="-war" />
 			<arg value="war" />
-								
-			<arg value="${moduleName}" />			
+
+			<arg value="${moduleName}" />
 		</java>
 	</target>
 
-			
-	
-	
-	
-	
-	
+
+
+
+
+
+
 
 	<target name="javadocs" depends="" description="generates javadoc and also UML Diagram">
 		<path id="project.src.path">
 			<pathelement location="${reports.dir}/src-all/" />
 			<pathelement location="${gwt.src}/user/src/" />
-		</path>			
-		
+		</path>
+
 		<!-- first copy all source files from all source folders to a common source folder -->
-		<mkdir dir="${reports.dir}/src-all"/>
+		<mkdir dir="${reports.dir}/src-all" />
 		<copydir dest="${reports.dir}/src-all/org" src="${reports.dir}/src/org">
 		</copydir>
-		
+
 		<!-- do the javadoc -->
-		<mkdir dir="${reports.dir}/javadoc"/>
-		
-		<javadoc sourcepathref="project.src.path" packagenames="org.sgx.raphael4gwt.*" 
-			excludepackagenames="org.sgx.raphael4gwt.test.*,org.sgx.raphael4gwt.public.*" useexternalfile="true"
-			destdir="${reports.dir}/javadoc" private="true">
-			
+		<mkdir dir="${reports.dir}/javadoc" />
+
+		<javadoc sourcepathref="project.src.path" packagenames="org.sgx.raphael4gwt.*" excludepackagenames="org.sgx.raphael4gwt.test.*,org.sgx.raphael4gwt.public.*" useexternalfile="true" destdir="${reports.dir}/javadoc" private="true">
+
 			<doclet name="org.umlgraph.doclet.UmlGraphDoc" path="lib/UmlGraph.jar">
 				<param name="-attributes" />
 				<param name="-operations" />
@@ -228,18 +191,18 @@
 			</doclet>
 		</javadoc>
 		<apply executable="dot" dest="${reports.dir}" parallel="false">
-			<arg value="-Tpng"/>
-			<arg value="-o"/>
-			<targetfile/>
-			<srcfile/>
-			<fileset dir="${reports.dir}" includes="*.dot"/>
-			<mapper type="glob" from="*.dot" to="*.png"/>
+			<arg value="-Tpng" />
+			<arg value="-o" />
+			<targetfile />
+			<srcfile />
+			<fileset dir="${reports.dir}" includes="*.dot" />
+			<mapper type="glob" from="*.dot" to="*.png" />
 		</apply>
-		<delete dir="src-all"/>
+		<delete dir="src-all" />
 
 	</target>
-	
-	
-	
+
+
+
 
 </project>

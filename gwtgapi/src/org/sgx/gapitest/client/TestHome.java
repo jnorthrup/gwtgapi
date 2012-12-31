@@ -3,6 +3,8 @@ package org.sgx.gapitest.client;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.sgx.gapitest.client.test.BooksTest1;
+import org.sgx.gapitest.client.test.CalendarTest1;
 import org.sgx.gapitest.client.test.CustomSearchTest1;
 import org.sgx.gapitest.client.test.DriveTest1;
 import org.sgx.gapitest.client.test.GAPITest1;
@@ -29,6 +31,8 @@ private void initTest() {
 	addTest(new DriveTest1());
 	addTest(new TranslateTest1());
 	addTest(new WebFontsTest1());
+	addTest(new BooksTest1());
+	addTest(new CalendarTest1());	
 }
 
 private void addTest(Test t) {

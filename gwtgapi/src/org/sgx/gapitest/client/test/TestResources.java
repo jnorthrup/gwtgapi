@@ -31,5 +31,10 @@ public interface TestResources extends ClientBundle {
 	@Source("WebFontsTest1.java")
 	public ExternalTextResource CustomSearchTest1();
 	
+	@Source("BooksTest1.java")
+	public ExternalTextResource BooksTest1();
+	
+	@Source("CalendarTest1.java")
+	public ExternalTextResource CalendarTest1();
 	
 }
