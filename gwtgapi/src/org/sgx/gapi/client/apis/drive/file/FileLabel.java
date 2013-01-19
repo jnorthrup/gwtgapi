@@ -12,8 +12,8 @@ import org.sgx.jsutil.client.JsUtil;
  * @author sg
  *
  */
-public class Label extends JsObject {
-	protected Label() {
+public class FileLabel extends JsObject {
+	protected FileLabel() {
 	}
 	
 	public native final Map<String, Boolean> toMap()/*-{
@@ -34,7 +34,7 @@ public class Label extends JsObject {
 	 * @param val
 	 * @return this - for setter chaining
 	 */
-	public native final Label starred(boolean val) /*-{
+	public native final FileLabel starred(boolean val) /*-{
 		this["starred"] = val;
 		return this;
 	}-*/;
@@ -52,7 +52,7 @@ public class Label extends JsObject {
 	 * @param val
 	 * @return this - for setter chaining
 	 */
-	public native final Label trashed(boolean val) /*-{
+	public native final FileLabel trashed(boolean val) /*-{
 		this["trashed"] = val;
 		return this;
 	}-*/;
@@ -70,7 +70,7 @@ public class Label extends JsObject {
 	 * @param val
 	 * @return this - for setter chaining
 	 */
-	public native final Label hidden(boolean val) /*-{
+	public native final FileLabel hidden(boolean val) /*-{
 		this["hidden"] = val;
 		return this;
 	}-*/;
@@ -88,7 +88,7 @@ public class Label extends JsObject {
 	 * @param val
 	 * @return this - for setter chaining
 	 */
-	public native final Label restricted(boolean val) /*-{
+	public native final FileLabel restricted(boolean val) /*-{
 		this["restricted"] = val;
 		return this;
 	}-*/;
@@ -106,7 +106,7 @@ public class Label extends JsObject {
 	 * @param val
 	 * @return this - for setter chaining
 	 */
-	public native final Label viewed(boolean val) /*-{
+	public native final FileLabel viewed(boolean val) /*-{
 		this["viewed"] = val;
 		return this;
 	}-*/;

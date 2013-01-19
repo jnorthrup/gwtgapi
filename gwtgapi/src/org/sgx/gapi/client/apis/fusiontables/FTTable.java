@@ -3,6 +3,7 @@ package org.sgx.gapi.client.apis.fusiontables;
 import java.util.Collection;
 
 import org.sgx.gapi.client.apis.GAPIBase;
+import org.sgx.gapi.client.apis.GAPIResult;
 
 import com.google.gwt.core.client.JsArray;
 import com.google.gwt.core.client.JsArrayString;
@@ -12,7 +13,7 @@ import com.google.gwt.core.client.JsArrayString;
  * @author sg
  * 
  */
-public class FTTable extends GAPIBase {
+public class FTTable extends GAPIResult {
 	protected FTTable() {
 	}
 

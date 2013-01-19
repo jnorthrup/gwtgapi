@@ -12,6 +12,7 @@ import com.google.gwt.dom.client.Document;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.ui.Anchor;
 import com.google.gwt.user.client.ui.VerticalPanel;
 
@@ -26,62 +27,68 @@ public class Gallery {
 			instance = new Gallery();
 		return instance;
 	}
-MainLayout mainLayout;
-private Element testTargetEl;
 
-public Gallery initGallery(MainLayout mainLayout) {
-//	super();
-	this.mainLayout = mainLayout;
-	init(); 
-	return this; 
-}
+	MainLayout mainLayout;
+	private Element testTargetEl;
 
+	public Gallery initGallery(MainLayout mainLayout) {
+		// super();
+		this.mainLayout = mainLayout;
+		init();
+		return this;
+	}
 
+	private void init() {
+		Map<String, Test> tests = TestHome.getInstance().getTest();
+		testTargetEl = mainLayout.getTestContainer();
+		VerticalPanel launcherPanel = mainLayout.getExampleLauncherContainer();
+		for (String testName : tests.keySet()) {
+			Anchor a = new Anchor();
+			launcherPanel.add(a);
+			final Test test = tests.get(testName);
+			a.setText(testName);
+			a.addClickHandler(new ClickHandler() {
+				@Override
+				public void onClick(ClickEvent event) {
+					test.test(testTargetEl);
+					event.preventDefault();
+					setCurrentTest(test);
+				}
+			});
+		}
+	}
 
-private void init() {
-	Map<String, Test> tests = TestHome.getInstance().getTest();
-	testTargetEl = mainLayout.getTestContainer(); 
-//	Element testLunchersContainer = mainLayout.getLeftPanel(); 
-	VerticalPanel launcherPanel = mainLayout.getExampleLauncherContainer(); 
-	for(String testName: tests.keySet()) {
-		Anchor a = new Anchor();
-		launcherPanel.add(a); 
-		final Test test = tests.get(testName); 
-		a.setText(testName); 
-//		System.out.println(testName);
-		a.addClickHandler(new ClickHandler() {			
-			@Override
-			public void onClick(ClickEvent event) {
-				test.test(testTargetEl); 
-				event.preventDefault(); 
-				setCurrentTest(test); 
-			}
-		}); 
-	}	
-}
-public static native final void prettyPrint()/*-{
-$wnd.prettyPrint();
-}-*/;
-public MainLayout getMainLayout() {
-	return mainLayout;
-}
+	public static native final void prettyPrint()/*-{
+		$wnd.prettyPrint();
+	}-*/;
 
-public void setMainLayout(MainLayout mainLayout) {
-	this.mainLayout = mainLayout;
-} 
+	public MainLayout getMainLayout() {
+		return mainLayout;
+	}
 
-public Console getConsole() {
-	return mainLayout.getConsole(); 
-}
+	public void setMainLayout(MainLayout mainLayout) {
+		this.mainLayout = mainLayout;
+	}
 
-public void log(String s) {
-	getConsole().append(s); 
-}
-Test currentTest; 
-public Test getCurrentTest() {
-	return currentTest;
-}
-public void setCurrentTest(Test currentTest) {
-	this.currentTest = currentTest;
-}
+	public Console getConsole() {
+		return mainLayout.getConsole();
+	}
+
+	public void log(String s) {
+		getConsole().append(s);
+	}
+
+	Test currentTest;
+
+	public Test getCurrentTest() {
+		return currentTest;
+	}
+
+	public void setCurrentTest(Test currentTest) {
+		this.currentTest = currentTest;
+	}
+
+	public Element getTestContainer() {
+		return mainLayout.getTestContainer();
+	}
 }

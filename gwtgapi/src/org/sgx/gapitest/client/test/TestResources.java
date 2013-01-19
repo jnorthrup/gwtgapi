@@ -37,4 +37,12 @@ public interface TestResources extends ClientBundle {
 	@Source("CalendarTest1.java")
 	public ExternalTextResource CalendarTest1();
 	
+	@Source("DriveAppsTest1.java")
+	public ExternalTextResource DriveAppsTest1();
+	
+	@Source("FusionTablesTest2.java")
+	public ExternalTextResource FusionTablesTest2();
+	
+	
+	
 }

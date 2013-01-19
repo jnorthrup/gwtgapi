@@ -13,8 +13,8 @@ import com.google.gwt.core.client.JsArray;
  * @author sg
  * 
  */
-public class FileListResource extends GAPIResult {
-	protected FileListResource() {
+public class FileList extends GAPIResult {
+	protected FileList() {
 	}
 
 	// /**
@@ -50,7 +50,7 @@ public class FileListResource extends GAPIResult {
 	 * @param val
 	 * @return this - for setter chaining
 	 */
-	public native final FileListResource selfLink(String val) /*-{
+	public native final FileList selfLink(String val) /*-{
 		this["selfLink"] = val;
 		return this;
 	}-*/;
@@ -70,7 +70,7 @@ public class FileListResource extends GAPIResult {
 	 * @param val
 	 * @return this - for setter chaining
 	 */
-	public native final FileListResource nextPageToken(String val) /*-{
+	public native final FileList nextPageToken(String val) /*-{
 		this["nextPageToken"] = val;
 		return this;
 	}-*/;
@@ -90,7 +90,7 @@ public class FileListResource extends GAPIResult {
 	 * @param val
 	 * @return this - for setter chaining
 	 */
-	public native final FileListResource nextLink(String val) /*-{
+	public native final FileList nextLink(String val) /*-{
 		this["nextLink"] = val;
 		return this;
 	}-*/;
@@ -100,7 +100,7 @@ public class FileListResource extends GAPIResult {
 	 * 
 	 * @return
 	 */
-	public native final JsArray<FileResource> items() /*-{
+	public native final JsArray<File> items() /*-{
 		return this["items"];
 	}-*/;
 
@@ -109,7 +109,7 @@ public class FileListResource extends GAPIResult {
 	 * 
 	 * @return
 	 */
-	public native final Collection<FileResource> itemsCol() /*-{
+	public native final Collection<File> itemsCol() /*-{
 		return @org.sgx.jsutil.client.JsUtil::toJavaCollection(Lcom/google/gwt/core/client/JavaScriptObject;)(this["items"]);
 	}-*/;
 
@@ -119,7 +119,7 @@ public class FileListResource extends GAPIResult {
 	 * @param val
 	 * @return this - for setter chaining
 	 */
-	public native final FileListResource items(JsArray<FileResource> val) /*-{
+	public native final FileList items(JsArray<File> val) /*-{
 		this["items"] = val;
 		return this;
 	}-*/;

@@ -2,7 +2,7 @@ package org.sgx.gapitest.client;
 
 public class GAPITestConstants {
 
-	public static boolean isDevel = false;
+	public static boolean isDevel = true;
 
 	public static String DEVEL_CLIENT_ID = "1081991926563-e64k9pb3cnmqqpegegaj85kim22vk0np.apps.googleusercontent.com";
 	public static String DEVEL_API_KEY = "AIzaSyAeX11OLg0zyBDlpYr2lqs4POPEjyWrooY";

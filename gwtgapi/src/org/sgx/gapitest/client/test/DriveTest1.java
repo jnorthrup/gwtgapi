@@ -8,8 +8,10 @@ import org.sgx.gapi.client.apis.GAPICallback;
 import org.sgx.gapi.client.apis.drive.DriveModuleDefinition;
 import org.sgx.gapi.client.apis.drive.about.DriveAboutGetRequest;
 import org.sgx.gapi.client.apis.drive.about.DriveAboutResource;
+import org.sgx.gapi.client.apis.drive.apps.AppsList;
+import org.sgx.gapi.client.apis.drive.apps.DriveAppListRequest;
 import org.sgx.gapi.client.apis.drive.file.DriveFileListRequest;
-import org.sgx.gapi.client.apis.drive.file.FileListResource;
+import org.sgx.gapi.client.apis.drive.file.FileList;
 import org.sgx.gapi.client.auth.AuthResponse;
 import org.sgx.gapi.client.loader.AuthDefinition;
 import org.sgx.gapi.client.loader.AuthUITrigger;
@@ -64,7 +66,7 @@ public class DriveTest1 extends AbstractTest {
 
 		GAPI.get().client().setApiKey(apiKey);		
 
-		ModuleDefinition moduleDef = new DriveModuleDefinition(); // ModuleDefinitionImpl("drive", "v2");		
+		ModuleDefinition moduleDef = new DriveModuleDefinition(); 		
 		AuthDefinition authDefinition = new AuthDefinition(clientId, scope, authUITrigger); 
 		GAPILoader loader = new GAPILoader(authDefinition, moduleDef); 
 		loader.load(new GAPILoaderCallback() {
@@ -89,9 +91,9 @@ public class DriveTest1 extends AbstractTest {
 			}
 		}); 
 		
-		new DriveFileListRequest().execute(new GAPICallback<FileListResource>() {			
+		new DriveFileListRequest().execute(new GAPICallback<FileList>() {			
 			@Override
-			public void call(FileListResource result) {	
+			public void call(FileList result) {	
 				if(result.error()!=null) {
 					log("list size error: "+result.error().message());
 					return; 
@@ -102,6 +104,21 @@ public class DriveTest1 extends AbstractTest {
 				
 			}
 		}); 
+		
+		new DriveAppListRequest().execute(new GAPICallback<AppsList>() {			
+			@Override
+			public void call(AppsList result) {	
+				if(result.error()!=null) {
+					log("app list error: "+result.error().message());
+					return; 
+				}
+				
+				log("app list size: "+result.items().length()+" - "
+//				"first file labels: "+result.items().get(0).labels().toMap().keySet().size()
+				); 
+				
+			}
+		});
 	}
 
 	@Override
@@ -119,10 +136,6 @@ public class DriveTest1 extends AbstractTest {
 		HashMap<String, GAPITestTextResource> m = new HashMap<String, GAPITestTextResource>();
 		m.put("DriveTest1.java", new GAPITestTextResource(TestResources.INSTANCE.DriveTest1()));
 		return m;
-//		return null; 
-//		HashMap<String, TextResource> m = new HashMap<String, TextResource>(); 
-//		m.put("DriveTest1.java", TestResources.INSTANCE.DriveTest1());
-//		return m;
 	}
 
 	@Override

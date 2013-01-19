@@ -9,7 +9,7 @@ import org.sgx.gapi.client.client.ClientRequestCallback;
 import org.sgx.gapi.client.client.HttpRequest;
 import org.sgx.jsutil.client.JsObject;
 
-public class DriveFileListRequest implements GAPIRequest<FileListResource> {
+public class DriveFileListRequest implements GAPIRequest<FileList> {
 	/**
 	 * Maximum number of files to return.
 	 */
@@ -32,7 +32,7 @@ public class DriveFileListRequest implements GAPIRequest<FileListResource> {
 	}
 
 	@Override
-	public void execute(final GAPICallback<FileListResource> c) {
+	public void execute(final GAPICallback<FileList> c) {
 		JsObject params = JsObject.createObject().cast();
 		if(maxResults>0)
 			params.objPut("maxResults", maxResults); 
@@ -47,7 +47,7 @@ public class DriveFileListRequest implements GAPIRequest<FileListResource> {
 		req.execute(new ClientRequestCallback() {
 			@Override
 			public void call(GAPIResult jsonResp, String rawResp) {
-				c.call((FileListResource) jsonResp);
+				c.call((FileList) jsonResp);
 			}
 		});
 	}

@@ -46,7 +46,7 @@
                     <g:Button text="See Java Sources" ui:field="seeSourcesButton"></g:Button>
                     of current test: 
                     
-                    <g:VerticalPanel ui:field="exampleLauncherContainer" styleName="{style.testLaunchersContainer}">
+                    <g:VerticalPanel ui:field="exampleLauncherContainer" styleName="{style.testLaunchersContainer} testLaunchersContainer}">
                     </g:VerticalPanel> 
                 </div>
 
