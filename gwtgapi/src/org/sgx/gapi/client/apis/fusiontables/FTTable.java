@@ -17,6 +17,10 @@ public class FTTable extends GAPIResult {
 	protected FTTable() {
 	}
 
+	public static native final FTTable create()/*-{
+		return {};
+	}-*/;
+
 	/**
 	 * Encrypted unique alphanumeric identifier for the table.
 	 * 

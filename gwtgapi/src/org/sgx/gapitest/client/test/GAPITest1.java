@@ -36,9 +36,12 @@ import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.RootPanel;
 
 /**
- * an full contained example analog to http://code.google.com/p/google-api-javascript-client/source/browse/samples/authSample.html
+ * an full contained example analog to JavaScript
+ * http://code.google.com/p/google-api-javascript-client/source/browse/samples/authSample.html
  * 
- * Here we do auth manually and show two different ways of accessing the api.
+ * Here we do auth manually and show two different ways of accessing the api: 
+ * using javascript directly (GWT JSO) and 
+ * using the Java API (wip)
  * 
  * @author sg
  * 
@@ -124,7 +127,10 @@ public class GAPITest1 extends AbstractTest implements EntryPoint, Test {
 			@Override
 			public void loaded() {
 
-				// we perform two operations, one using the Java easy api:
+				/* 
+				 * we perform the same operation (/plus/v1/people/get/me) twice, 
+				 * one using the Java easy api (apis.plus.PeopleGetRequest):
+				 */
 
 				new PeopleGetRequest<PeopleGetResult>("me").execute(new GAPICallback<PeopleGetResult>() {
 					@Override
@@ -136,7 +142,10 @@ public class GAPITest1 extends AbstractTest implements EntryPoint, Test {
 					}
 				});
 
-				// and the other operation doing manual work. The first Java solution is based on this:
+				/*
+				 * and the other operation doing manual work. 
+				 * The first Java solution uses this internally: 
+				 */
 
 				ClientRequestCallback requestCallback = new ClientRequestCallback() {
 					@Override

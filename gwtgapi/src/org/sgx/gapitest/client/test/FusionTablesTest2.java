@@ -27,6 +27,7 @@ import org.sgx.gapitest.client.AbstractTest;
 import org.sgx.gapitest.client.GAPITestConstants;
 import org.sgx.gapitest.client.GAPITestTextResource;
 import org.sgx.gapitest.client.app.Gallery;
+import org.sgx.jsutil.client.DOMUtil;
 import org.sgx.jsutil.client.JsUtil;
 import org.sgx.jsutil.client.UUID;
 
@@ -37,9 +38,7 @@ import com.google.gwt.dom.client.Element;
 import com.google.gwt.dom.client.LIElement;
 import com.google.gwt.dom.client.ParagraphElement;
 import com.google.gwt.dom.client.UListElement;
-import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.Event;
-import com.google.gwt.user.client.EventListener;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.RootPanel;
@@ -52,29 +51,6 @@ import com.google.gwt.user.client.ui.RootPanel;
  * 
  */
 public class FusionTablesTest2 extends AbstractTest implements EntryPoint {
-
-	public static void clear(UListElement e) {
-		while(e.getLastChild()!=null)
-			e.removeChild(e.getLastChild());
-//		NodeList<Node> childs = e.getChildNodes();
-//		for (int i = 0; i < childs.getLength(); i++) {
-//			e.removeChild(childs.getItem(i));
-//		}
-	}
-
-	public static void addClickHandler(Element e, final ClickHandler handler) {
-		DOM.sinkEvents((com.google.gwt.user.client.Element) e, Event.ONCLICK);
-		DOM.setEventListener((com.google.gwt.user.client.Element) e, new EventListener() {
-			@Override
-			public void onBrowserEvent(Event event) {
-				handler.onClick(event);
-			}
-		});
-	}
-
-	public static interface ClickHandler {
-		void onClick(Event event);
-	}
 
 	private String clientId;
 	private String apiKey;
@@ -133,7 +109,7 @@ public class FusionTablesTest2 extends AbstractTest implements EntryPoint {
 		Element tableListButton = doc.createPushButtonElement();
 		parent.appendChild(tableListButton);
 		tableListButton.setInnerHTML("list tables");
-		addClickHandler(tableListButton, new ClickHandler() {
+		DOMUtil.addClickHandler(tableListButton, new DOMUtil.ClickHandler() {
 			@Override
 			public void onClick(Event event) {
 				doListTables();
@@ -143,7 +119,7 @@ public class FusionTablesTest2 extends AbstractTest implements EntryPoint {
 		Element tableCreateButton = doc.createPushButtonElement();
 		parent.appendChild(tableCreateButton);
 		tableCreateButton.setInnerHTML("create table");
-		addClickHandler(tableCreateButton, new ClickHandler() {
+		DOMUtil.addClickHandler(tableCreateButton, new DOMUtil.ClickHandler() {
 			@Override
 			public void onClick(Event event) {
 				doCreateTable();
@@ -163,7 +139,7 @@ public class FusionTablesTest2 extends AbstractTest implements EntryPoint {
 				if (result.error() != null) {
 					log("error : " + result.error().message());
 				} else {
-					clear(tableListEl);
+					DOMUtil.clear(tableListEl);
 					System.out.println(result.itemsCol().size());
 					for (final FTTable table : result.itemsCol()) {
 						LIElement li = doc.createLIElement();
@@ -173,7 +149,7 @@ public class FusionTablesTest2 extends AbstractTest implements EntryPoint {
 						ButtonElement editButton = doc.createPushButtonElement();
 						li.appendChild(editButton);
 						editButton.setInnerHTML("edit");
-						addClickHandler(editButton, new ClickHandler() {
+						DOMUtil.addClickHandler(editButton, new DOMUtil.ClickHandler() {
 							@Override
 							public void onClick(Event event) {
 								doEditTable(table);
@@ -183,7 +159,7 @@ public class FusionTablesTest2 extends AbstractTest implements EntryPoint {
 						ButtonElement removeButton = doc.createPushButtonElement();
 						li.appendChild(removeButton);
 						removeButton.setInnerHTML("remove");
-						addClickHandler(removeButton, new ClickHandler() {
+						DOMUtil.addClickHandler(removeButton, new DOMUtil.ClickHandler() {
 							@Override
 							public void onClick(Event event) {
 								doRemoveTable(table);
