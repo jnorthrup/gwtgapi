@@ -1,0 +1,15 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder" xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:style>
+		
+	</ui:style>
+	<g:HTMLPanel>
+	    <h3>Administer your Tables</h3>
+	    <g:Button ui:field="createButton" text="Create new table"></g:Button>
+	    <g:Button ui:field="listButton" text="List all tables"></g:Button>
+	    
+	     <g:VerticalPanel ui:field="box" >
+        </g:VerticalPanel>
+        
+	</g:HTMLPanel>
+</ui:UiBinder> 

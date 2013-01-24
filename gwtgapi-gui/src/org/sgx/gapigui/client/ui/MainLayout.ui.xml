@@ -1,0 +1,32 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+    xmlns:g="urn:import:com.google.gwt.user.client.ui"
+    xmlns:ftgui="urn:import:org.sgx.gapigui.client.ui"
+     >
+
+    <ui:style>
+    </ui:style>
+    
+    
+    <g:HTMLPanel>
+
+        <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.8.0/build/cssgrids/grids-min.css"></link>
+            
+        <div class="yui3-g" >
+
+            <div class="yui3-u-5-24" >
+              
+                <ftgui:Menu ui:field="menu"></ftgui:Menu>
+                
+            </div>
+
+            <div class="yui3-u-19-24" >
+                <ftgui:Body ui:field="body"></ftgui:Body>
+                blabla slkdjals kdjlaksjdlk asdblabla slkdjals kdjlaksjdlk asdblabla slkdjals kdjlaksjdlk asdblabla slkdjals kdjlaksjdlk asdblabla slkdjals kdjlaksjdlk asdblabla slkdjals kdjlaksjdlk asdblabla slkdjals kdjlaksjdlk asdblabla slkdjals kdjlaksjdlk asdblabla slkdjals kdjlaksjdlk asd
+            </div>
+        </div>
+        
+        
+    </g:HTMLPanel>
+
+</ui:UiBinder>

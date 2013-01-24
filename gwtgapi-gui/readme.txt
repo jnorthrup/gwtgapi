@@ -1,0 +1,1 @@
+An example gwtgapi application. Production ready application for examining google apis using the projects gwtgapi and gwteditors for auto editor creation, both authored by me, sg. 
