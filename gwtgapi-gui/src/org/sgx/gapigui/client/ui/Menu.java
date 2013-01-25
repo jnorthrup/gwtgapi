@@ -1,6 +1,7 @@
 package org.sgx.gapigui.client.ui;
 
 import org.sgx.gapigui.client.Main;
+import org.sgx.gapigui.client.state.AppStateManager;
 import org.sgx.jsutil.client.DOMUtil;
 import org.sgx.jsutil.client.DOMUtil.EventHandler;
 
@@ -20,24 +21,27 @@ public class Menu extends Composite {
 	}
 
 	@UiField
-	Element tablesListButton, tablesQueryButton;
+	Element tablesListButton, tablesQueryButton, introLink;
 
 	public Menu() {
 		initWidget(uiBinder.createAndBindUi(this));
-		DOMUtil.addClickHandler(tablesListButton, new EventHandler() {
-
+		
+		DOMUtil.addClickHandler(introLink, new EventHandler() {
 			@Override
 			public void onEvent(Event event) {
-				Main.layout().body().showTablesView(); 
-//				Main.controller().showTablesView(); 
+				Main.state().navigate(AppStateManager.STATE_INTRODUCTION);
+			}
+		}, true);		
+		DOMUtil.addClickHandler(tablesListButton, new EventHandler() {
+			@Override
+			public void onEvent(Event event) {
+				Main.state().navigate(AppStateManager.STATE_FT_TABLES);
 			}
 		}, true);
 		DOMUtil.addClickHandler(tablesQueryButton, new EventHandler() {
-
 			@Override
 			public void onEvent(Event event) {
-				Main.layout().body().showTableQueriesView(); 
-//				Main.controller().showTablesView(); 
+				Main.state().navigate(AppStateManager.STATE_FT_QUERIES);
 			}
 		}, true);
 	}

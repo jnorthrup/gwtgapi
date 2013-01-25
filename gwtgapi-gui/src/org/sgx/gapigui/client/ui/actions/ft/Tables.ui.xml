@@ -8,6 +8,8 @@
 	    <g:Button ui:field="createButton" text="Create new table"></g:Button>
 	    <g:Button ui:field="listButton" text="List all tables"></g:Button>
 	    
+	    <g:VerticalPanel ui:field="listAllTablesPanel"></g:VerticalPanel>
+	    
 	     <g:VerticalPanel ui:field="box" >
         </g:VerticalPanel>
         

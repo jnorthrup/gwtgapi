@@ -1,4 +1,4 @@
-package org.sgx.gapigui.client.ui.editableModels;
+package org.sgx.gapigui.client.ui.test;
 
 import java.util.*;
 

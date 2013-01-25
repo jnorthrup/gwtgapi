@@ -9,10 +9,12 @@
 	<g:HTMLPanel>
 
 
-		blabla slkdjals kdjlaksjdlk asdblabla slkdjals kdjlaksjdlk asdblabla slkdjals kdjlaksjdlk asdblabla slkdjals kdjlaksjdlk asdblabla slkdjals kdjlaksjdlk asdblabla slkdjals
-		kdjlaksjdlk asdblabla slkdjals kdjlaksjdlk asd
+		<h2> <a ui:field="introLink">Introduction</a></h2>
+		
+<!-- 		blabla slkdjals kdjlaksjdlk asdblabla slkdjals kdjlaksjdlk asdblabla slkdjals kdjlaksjdlk asdblabla slkdjals kdjlaksjdlk asdblabla slkdjals kdjlaksjdlk asdblabla slkdjals -->
+<!-- 		kdjlaksjdlk asdblabla slkdjals kdjlaksjdlk asd -->
 
-		<h2>Tables</h2>
+		<h2>Fusion Tables</h2>
 
 		<ul>
 			<li>

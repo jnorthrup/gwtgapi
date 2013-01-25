@@ -10,6 +10,7 @@ import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.HasWidgets;
+import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.user.client.ui.Widget;
 
@@ -19,28 +20,44 @@ public class Body extends Composite implements BodyView {
 
 	interface BodyUiBinder extends UiBinder<Widget, Body> {
 	}
-	private Tables tables=null;
+//	private Tables tables=null;
 
 	public Body() {
 		initWidget(uiBinder.createAndBindUi(this));
 	}
 
 //	@UiField DivElement box; 
-	@UiField VerticalPanel box; 
+	@UiField VerticalPanel box;
+
+	@Override
+	public Panel getMainPanel() {
+		return box;
+	}
+
+	@Override
+	public void showView(Widget v) {
+		box.clear();
+		box.add(v); 
+//		if(tables==null) {
+//			tables = new Tables();
+//			box.add(tables); 
+//		}
+//		tables.setVisible(true); 
+	} 
 	
-	@Override
-	public void showTablesView() {
-		VerticalPanel vp ; 
-		if(tables==null) {
-			tables = new Tables();
-			box.add(tables); 
-		}
-		tables.setVisible(true); 
-//		Window.alert("showtablesview"); 
-	}
-	@Override
-	public void showTableQueriesView() {
-		
-//		Window.alert("showTableQueriesView");
-	}
+//	@Override
+//	public void showTablesView() {
+//		VerticalPanel vp ; 
+//		if(tables==null) {
+//			tables = new Tables();
+//			box.add(tables); 
+//		}
+//		tables.setVisible(true); 
+////		Window.alert("showtablesview"); 
+//	}
+//	@Override
+//	public void showTableQueriesView() {
+//		
+////		Window.alert("showTableQueriesView");
+//	}
 }

@@ -1,0 +1,28 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder" xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:style>
+		
+	</ui:style>
+	<g:HTMLPanel>
+	    <h3>Introduction</h3>
+	    
+	    <p>This project is a demonstration of accessing some Google APIs modules using 
+	        the project <a href="http://code.google.com/p/gwtgapi/">gwtgapi</a> an GWT Java API for accessing google's APIs directly from the client. </p>
+	        
+	    <p>It also uses other projects of this same author like <a href="http://code.google.com/p/gwteditors/">gwteditors</a> and
+	        for automatic editor GUI creation and <a href="http://code.google.com/p/gwtjsutil/">gwtjsutil</a> for easy
+	        GWT wrapping the JavaScript library <a href="http://code.google.com/p/google-api-javascript-client/">google-api-javascript-client</a></p>
+	        
+	    <p>Author: Sebastián Gurin - sg - cancerbero_sgx</p>
+	    
+	    <p>Interesting features of this webapp: </p>
+	    
+	    <ul>
+	        <li>No third party serverside - your browser talk directly to google's servers</li>
+	        <li>Written with GWT (Java)</li>
+	        <li></li>
+	        <li></li>
+	    </ul>
+	        
+	</g:HTMLPanel>
+</ui:UiBinder> 

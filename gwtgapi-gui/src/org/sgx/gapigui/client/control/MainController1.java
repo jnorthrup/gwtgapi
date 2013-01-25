@@ -7,6 +7,8 @@ import org.sgx.gapi.client.apis.GAPICallback;
 import org.sgx.gapi.client.apis.fusiontables.FTTable;
 import org.sgx.gapi.client.apis.fusiontables.table.TableListRequest;
 import org.sgx.gapi.client.apis.fusiontables.table.TableListResult;
+import org.sgx.gapigui.client.ui.editableModels.ft.Table;
+import org.sgx.gapigui.client.ui.editableModels.ft.TableCreateCommand;
 import org.sgx.jsutil.client.DOMUtil;
 
 import com.google.gwt.dom.client.ButtonElement;
@@ -17,7 +19,6 @@ public class MainController1 implements MainController {
 	private static MainController instance;
 
 	private List<WorkListener> workListeners;
-	private boolean working;
 
 	private MainController1() {
 		workListeners = new LinkedList<WorkListener>();
@@ -28,6 +29,14 @@ public class MainController1 implements MainController {
 			instance = new MainController1();
 		return instance;
 	}
+	
+	
+	
+	
+	//working flag
+
+	private boolean working;
+	String workingMsg;
 
 	/* (non-Javadoc)
 	 * @see org.sgx.gapigui.client.control.MainController#addWorkListener(org.sgx.gapigui.client.control.WorkListener)
@@ -54,6 +63,10 @@ public class MainController1 implements MainController {
 		}
 	}
 	
+	
+	
+	//system calls
+	
 
 //	/* (non-Javadoc)
 //	 * @see org.sgx.gapigui.client.control.MainController#showTablesView()
@@ -66,51 +79,32 @@ public class MainController1 implements MainController {
 	
 
 	@Override
-	public void doTableCreate(FTTable table) {
-				
+	public void doTableCreate(TableCreateCommand tcc) {
+
+		FTTable table = FTTable.create().name(tcc.getName()).description("tcc.getDescription()")
+				.isExportable(tcc.getIsExportable());
+		
+		//TODO
 	}
 
 	/* (non-Javadoc)
 	 * @see org.sgx.gapigui.client.control.MainController#doListTables()
 	 */
 	@Override
-	public void doTableList() {
-		new TableListRequest().execute(new GAPICallback<TableListResult>() {
+	public void doTableList(final ControllerCallback<List<Table>> callback) {
+		new TableListRequest().execute(
+		new GAPICallback<TableListResult>() {			
 			@Override
-			public void call(TableListResult result) {
+			public void call(TableListResult result) {				
 
-//				if (result.error() != null) {
+				if (result.error() != null) {
 //					log("error : " + result.error().message());
-//				} else {
-//					DOMUtil.clear(tableListEl);
-//					System.out.println(result.itemsCol().size());
-//					for (final FTTable table : result.itemsCol()) {
-//						LIElement li = doc.createLIElement();
-//						tableListEl.appendChild(li);
-//						li.setInnerHTML(table.name());
-//
-//						ButtonElement editButton = doc.createPushButtonElement();
-//						li.appendChild(editButton);
-//						editButton.setInnerHTML("edit");
-//						DOMUtil.addClickHandler(editButton, new DOMUtil.ClickHandler() {
-//							@Override
-//							public void onClick(Event event) {
-//								doEditTable(table);
-//							}
-//						});
-//
-//						ButtonElement removeButton = doc.createPushButtonElement();
-//						li.appendChild(removeButton);
-//						removeButton.setInnerHTML("remove");
-//						DOMUtil.addClickHandler(removeButton, new DOMUtil.ClickHandler() {
-//							@Override
-//							public void onClick(Event event) {
-//								doRemoveTable(table);
-//							}
-//
-//						});
-//					}
-//				}
+				} else {
+					List<Table> l = new LinkedList<Table>();
+					for(FTTable table : result.itemsCol()) 
+						l.add(Table.from(table)); 					
+					callback.call(l); 
+				}
 			}
 		});
 	}
