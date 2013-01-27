@@ -51,14 +51,15 @@ public class AuthUtil {
 		handleAuthResult = new AuthCallback() {
 			@Override
 			public void authenticated(AuthResponse r) {
+//				System.out.println("seba333");
 				// System.out.println("HHH: " + JsUtil.dumpObj(r ) + " - " + JsUtil.dumpObj(r.error()));
 				if (r != null && r.error() == null) {
-//					System.out.println("making api call");
+//					System.out.println(" auth making api call");
 					trigger.setEnabled(false); // .removeFromParent(); // .setEnabled(false);//.getStyle().setProperty("visibility", "hidden");
 					ready.authenticated(r); 
 //					ready.run();
 				} else {
-//					System.out.println("not making api call");
+//					System.out.println(" auth not making api call");
 					trigger.setEnabled(true);
 					trigger.addTriggerHandler(new Runnable() {
 						@Override
@@ -80,6 +81,7 @@ public class AuthUtil {
 		JsUtil.setTimeout(new SimpleCallback() {
 			@Override
 			public void call() {
+//				System.out.println("seba222");
 				GAPI.get()
 						.auth()
 						.authorize(AuthRequest.create().client_id(clientId).scope(scope).immediate(true),

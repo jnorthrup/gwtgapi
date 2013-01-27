@@ -109,9 +109,9 @@ public class FusionTablesTest2 extends AbstractTest implements EntryPoint {
 		Element tableListButton = doc.createPushButtonElement();
 		parent.appendChild(tableListButton);
 		tableListButton.setInnerHTML("list tables");
-		DOMUtil.addClickHandler(tableListButton, new DOMUtil.ClickHandler() {
+		DOMUtil.addClickHandler(tableListButton, new DOMUtil.EventHandler() {
 			@Override
-			public void onClick(Event event) {
+			public void onEvent(Event event) {
 				doListTables();
 			}
 		});
@@ -119,9 +119,9 @@ public class FusionTablesTest2 extends AbstractTest implements EntryPoint {
 		Element tableCreateButton = doc.createPushButtonElement();
 		parent.appendChild(tableCreateButton);
 		tableCreateButton.setInnerHTML("create table");
-		DOMUtil.addClickHandler(tableCreateButton, new DOMUtil.ClickHandler() {
+		DOMUtil.addClickHandler(tableCreateButton, new DOMUtil.EventHandler() {
 			@Override
-			public void onClick(Event event) {
+			public void onEvent(Event event) {
 				doCreateTable();
 			}
 		});
@@ -149,9 +149,9 @@ public class FusionTablesTest2 extends AbstractTest implements EntryPoint {
 						ButtonElement editButton = doc.createPushButtonElement();
 						li.appendChild(editButton);
 						editButton.setInnerHTML("edit");
-						DOMUtil.addClickHandler(editButton, new DOMUtil.ClickHandler() {
+						DOMUtil.addClickHandler(editButton, new DOMUtil.EventHandler() {
 							@Override
-							public void onClick(Event event) {
+							public void onEvent(Event event) {
 								doEditTable(table);
 							}
 						});
@@ -159,9 +159,9 @@ public class FusionTablesTest2 extends AbstractTest implements EntryPoint {
 						ButtonElement removeButton = doc.createPushButtonElement();
 						li.appendChild(removeButton);
 						removeButton.setInnerHTML("remove");
-						DOMUtil.addClickHandler(removeButton, new DOMUtil.ClickHandler() {
+						DOMUtil.addClickHandler(removeButton, new DOMUtil.EventHandler() {
 							@Override
-							public void onClick(Event event) {
+							public void onEvent(Event event) {
 								doRemoveTable(table);
 							}
 

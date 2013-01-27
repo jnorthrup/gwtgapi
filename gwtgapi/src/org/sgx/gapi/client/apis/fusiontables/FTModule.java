@@ -13,5 +13,9 @@ public class FTModule implements ModuleDefinition {
 	public String getModuleVersion() {
 		return "v1"; 
 	}
+	@Override
+	public String toString() {
+		return "MOdule("+getModuleName()+", "+getModuleVersion()+")";
+	}
 
 }

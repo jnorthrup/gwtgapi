@@ -4,6 +4,10 @@ public class AuthDefinition {
 	String clientId, scope;
 	AuthUITrigger authUITrigger;
 
+	@Override
+	public String toString() {
+		return "Auth("+getClientId()+", "+getScope()+")";
+	}
 	public AuthDefinition(String clientId, String scope, AuthUITrigger authUITrigger) {
 		super();
 		this.clientId = clientId;

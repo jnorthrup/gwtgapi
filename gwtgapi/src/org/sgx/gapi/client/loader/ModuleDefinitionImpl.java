@@ -8,7 +8,10 @@ public ModuleDefinitionImpl(String moduleName, String moduleVersion) {
 	this.moduleName = moduleName;
 	this.moduleVersion = moduleVersion;
 }
-
+@Override
+public String toString() {
+	return "MOdule("+getModuleName()+", "+getModuleVersion()+")";
+}
 /* (non-Javadoc)
  * @see org.sgx.gapi.client.loader.ModuleDefinition#getModuleName()
  */

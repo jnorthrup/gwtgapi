@@ -34,6 +34,7 @@ public class GAPILoader implements AuthCallback {
 	}
 
 	public void load(GAPILoaderCallback callback) {
+//		System.out.println("sebas123");
 		this.gapiLoadedCallback = callback;
 		if (authDefinition != null) {
 			authUtil = new AuthUtil();

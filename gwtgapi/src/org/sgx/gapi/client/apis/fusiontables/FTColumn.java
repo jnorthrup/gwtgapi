@@ -17,11 +17,10 @@ public class FTColumn extends GAPIBase {
 		return {};
 	}-*/;
 
-	public static final String 
-			TYPE_NUMBER = "NUMBER", 
-			TYPE_STRING = "STRING", 
-			TYPE_LOCATION = "LOCATION",
+	public static final String TYPE_NUMBER = "NUMBER", TYPE_STRING = "STRING", TYPE_LOCATION = "LOCATION",
 			TYPE_DATETIME = "DATETIME";
+
+	public static final String[] TYPES = { TYPE_NUMBER, TYPE_STRING, TYPE_LOCATION, TYPE_DATETIME };
 
 	/**
 	 * Identifier for the column.
