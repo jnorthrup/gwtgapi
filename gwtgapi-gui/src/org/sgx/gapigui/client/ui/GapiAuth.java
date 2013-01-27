@@ -9,7 +9,7 @@ import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Widget;
 
-public class GapiAuth extends Composite {
+public class GapiAuth extends Composite implements GapiAuthView {
 
 	private static GapiAuthUiBinder uiBinder = GWT.create(GapiAuthUiBinder.class);
 
@@ -31,13 +31,19 @@ public class GapiAuth extends Composite {
 		}); 
 	}
 
-	public String getScope() {
-		return scope;
-	}
+//	public String getScope() {
+//		return scope;
+//	}
+//
+//	public void setScope(String scope) {
+//		this.scope = scope;
+//	}
 
-	public void setScope(String scope) {
-		this.scope = scope;
+	/* (non-Javadoc)
+	 * @see org.sgx.gapigui.client.ui.GapiAuthView#getAuthButton()
+	 */
+	@Override
+	public Button getAuthButton() {
+		return authButton;
 	}
-
-	
 }

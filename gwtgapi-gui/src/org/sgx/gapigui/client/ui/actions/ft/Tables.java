@@ -83,6 +83,12 @@ public class Tables extends Composite {
 						return t.getName(); 
 					}
 				};
+				Main.controller().doTableList(new ControllerCallback<List<Table>>() {					
+					@Override
+					public void call(List<Table> result) {
+						Window.alert(result.size()+""); 
+					}
+				}); 
 //				ItemCreator<Table> itemCreator = new ItemCreator<Table>() {
 //
 //					@Override

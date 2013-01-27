@@ -25,5 +25,6 @@ public interface AppStateManager {
 	 * @return
 	 */
 	String urlContainsState(String url); 
+	void addStateListener(StateListener l); 
 }
 

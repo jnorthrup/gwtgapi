@@ -7,4 +7,6 @@ public interface MainLayoutView extends IsWidget {
 //Widget asWidget(); 
 //	Menu menu(); 
 	BodyView body();
+	GapiAuthView createNewAuthPanel();
+	void hideAuthPanel(); 
 }

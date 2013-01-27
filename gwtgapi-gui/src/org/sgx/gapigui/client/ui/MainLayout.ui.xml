@@ -26,6 +26,9 @@
             </div>
         </div>
         
+<!--         <ftgui:GapiAuth ui:field="authPanel"></ftgui:GapiAuth> -->
+        
+<!--         <g:ver -->
         
     </g:HTMLPanel>
 
