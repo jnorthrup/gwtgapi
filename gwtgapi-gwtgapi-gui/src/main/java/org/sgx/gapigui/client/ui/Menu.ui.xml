@@ -1,0 +1,32 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder" xmlns:g="urn:import:com.google.gwt.user.client.ui">
+
+
+	<ui:with field='res' type='org.sgx.gapigui.client.ui.res.MNResources' />
+
+
+
+	<g:HTMLPanel>
+
+
+		<h2> <a ui:field="introLink">Introduction</a></h2>
+		
+<!-- 		blabla slkdjals kdjlaksjdlk asdblabla slkdjals kdjlaksjdlk asdblabla slkdjals kdjlaksjdlk asdblabla slkdjals kdjlaksjdlk asdblabla slkdjals kdjlaksjdlk asdblabla slkdjals -->
+<!-- 		kdjlaksjdlk asdblabla slkdjals kdjlaksjdlk asd -->
+
+		<h2>Fusion Tables</h2>
+
+		<ul>
+			<li>
+				<a ui:field="tablesListButton" class="{res.style.link}"
+				>Examine tables</a>
+			</li>
+
+<!-- 				class="{res.style.link}" -->
+			<li>
+				<a ui:field="tablesQueryButton" class="{res.style.link}"
+				>Query / Search tables</a>
+			</li>
+		</ul>
+	</g:HTMLPanel>
+</ui:UiBinder> 

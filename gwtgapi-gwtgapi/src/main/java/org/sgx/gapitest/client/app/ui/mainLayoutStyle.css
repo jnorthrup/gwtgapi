@@ -1,0 +1,30 @@
+.important {
+	font-weight: bold;
+}
+
+.wrapper {
+	width: 90%;
+	margin: auto;
+}
+
+.header {
+	margin-bottom: 0.4 em;
+}
+
+.body {
+	
+}
+
+.testContainer {
+}
+
+.leftPanel {
+	
+}
+
+a {
+	cursor: pointer;
+}
+.testLaunchersContainer td{
+	padding-top: 0.7em;
+}

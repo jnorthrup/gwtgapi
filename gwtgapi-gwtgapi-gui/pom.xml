@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>gwtgapi</groupId>
+        <artifactId>gwtgapi-parent</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <groupId>gwtgapi</groupId>
+    <artifactId>gwtgapi-gwtgapi-gui</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <name>gwtgapi-gwtgapi-gui</name>
+    <description>gwtgapi-gui of gwtgapi Terraformed... by jim@keyframe... on Intel(R) Core(TM) i7 CPU X 980 @ 3.33GHz
+        GenuineIntel GNU/Linux... for gwtgapi,gwtgapi-gui,gwtgapitest1...
+    </description>
+    <url>http://keyframe/gwtgapi-gui</url>
+
+    <dependencies>
+        <dependency>
+            <groupId>gwtgapi</groupId>
+            <artifactId>gwtgapi-gwtgapi</artifactId>
+            <version>${parent.version}</version>
+        </dependency>
+    </dependencies>
+
+</project>
